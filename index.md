@@ -1,8 +1,8 @@
 <font size="5"> Current appointment </font>
 
 **Eric and Wendy Schmidt AI in Science Postdoctoral Fellow**\
-Department of Ecology and Evolutionary Biology
-Department of Natural Resources and the Environment
+Department of Ecology and Evolutionary Biology\
+Department of Natural Resources and the Environment\
 Cornell University – Ithaca, NY
 
 <font size="5"> Education </font>
