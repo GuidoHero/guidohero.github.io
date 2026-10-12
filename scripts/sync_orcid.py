@@ -1,8 +1,8 @@
 """Keep the publication data files up to date.
 
-1. _data/submitted.yml (preprints, papers in review or accepted): any entry
-   that has a `doi:` but no `title:` is filled in from Crossref, so adding a
-   preprint only takes its DOI.
+1. In _data/submitted.yml and _data/publications.yml, any entry that has a
+   `doi:` but no `title:` is filled in from Crossref, so adding a paper only
+   takes its DOI.
 2. _data/publications.yml: new papers on the ORCID record are added.
 
 Reads the ORCID iD from _config.yml (`orcid:`), lists the works on that
@@ -164,11 +164,11 @@ def build_entry(work, me):
     return entry
 
 
-def fill_submitted(me, dry_run):
-    """Fill in entries of _data/submitted.yml that only have a DOI."""
-    if not SUBMITTED.exists():
+def fill_from_doi(path, me, dry_run):
+    """Fill in entries that have a `doi:` but no `title:` from Crossref."""
+    if not path.exists():
         return
-    header, blocks = split_entries(SUBMITTED.read_text())
+    header, blocks = split_entries(path.read_text())
     changed = 0
     for i, block in enumerate(blocks):
         given = yaml.safe_load(block)[0]
@@ -177,20 +177,22 @@ def fill_submitted(me, dry_run):
         doi = normalize_doi(given["doi"])
         msg = fetch_crossref(doi)
         if not msg:
-            print(f"Submitted: {doi} not found in Crossref, will retry next run")
+            print(f"{path.name}: {doi} not found in Crossref, will retry next run")
             continue
         entry = crossref_fields(msg, me)
-        if msg.get("type") == "posted-content":
+        if path == SUBMITTED and msg.get("type") == "posted-content":
             entry["status"] = "Preprint"
         entry.update({k: v for k, v in given.items() if v not in (None, "")})  # your values win
         entry["doi"] = doi
+        if path == DATA and "pdf" not in entry:
+            entry["pdf"] = pdf_name(entry["authors"], entry["year"], entry["journal"])
         blocks[i] = entry_to_yaml(entry) + "\n"
         changed += 1
-        print(f"Submitted: filled in {entry['title']} ({doi})")
+        print(f"{path.name}: filled in {entry['title']} ({doi})")
     if changed:
         output = header + "".join(blocks)
         yaml.safe_load(output)
-        print(output) if dry_run else SUBMITTED.write_text(output)
+        print(output) if dry_run else path.write_text(output)
 
 
 def entry_to_yaml(entry):
@@ -218,7 +220,8 @@ def main(argv):
     dry_run = "--dry-run" in argv
     config = yaml.safe_load(CONFIG.read_text())
     me = config.get("scholar_name") or "Herrera-R, G.A."
-    fill_submitted(me, dry_run)
+    fill_from_doi(SUBMITTED, me, dry_run)
+    fill_from_doi(DATA, me, dry_run)
 
     orcid = (config.get("orcid") or "").strip()
     if not re.fullmatch(r"\d{4}-\d{4}-\d{4}-\d{3}[\dX]", orcid):

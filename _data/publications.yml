@@ -1,6 +1,9 @@
 # Publication list shown on the home page, in display order (newest first).
-# Add a new paper by copying an entry. Only title/authors/year/journal are required.
-# Your name is bolded automatically. See README.md for details.
+# Add a new paper with just its DOI (e.g. `- doi: "10.1111/ele.70443"`); the
+# rest is filled in on the next sync. Or copy an entry and fill it in by hand.
+# Your name is bolded automatically.
+
+- doi: "10.1038/s44358-025-00115-z"
 
 - title: "Interplay Between Species Traits, Community and Environmental Context Governs Temporal Stability in Riverine Fish Populations"
   authors: "Herrera-R, G.A., Olden, J.D., Tedesco, P.A., Comte, L., & Giam, X."
