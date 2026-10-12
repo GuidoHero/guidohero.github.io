@@ -3,10 +3,7 @@ name: Sync publications from ORCID
 on:
   schedule:
     - cron: "17 9 * * 1"  # Mondays, 09:17 UTC
-  workflow_dispatch:        # "Run workflow" button on the Actions tab (Actions → this workflow)
-  push:                     # TEMPORARY: run once on this branch before merge
-    branches: [claude/publication-list-update-7ao330]
-    paths: [.github/workflows/sync-publications.yml]
+  workflow_dispatch:        # "Run workflow" button on the Actions tab
 
 permissions:
   contents: write
