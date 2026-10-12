@@ -1,0 +1,7 @@
+{%- comment -%}
+  Renders a PDF download link only when papers/{{ include.file }} exists.
+  Usage: {% include pdf.html file="HerreraR2024_FishFisheries.pdf" %}
+{%- endcomment -%}
+{%- assign pdf_path = "/papers/" | append: include.file -%}
+{%- assign pdf_match = site.static_files | where: "path", pdf_path | first -%}
+{%- if pdf_match %} · <a href="{{ pdf_path | relative_url }}" download>[PDF]</a>{% endif -%}
