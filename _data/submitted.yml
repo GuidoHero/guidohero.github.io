@@ -3,5 +3,10 @@
 # automatically on the next sync. Optional: status ("Preprint", "In review",
 # "Accepted"), journal, pdf. Move an entry to publications.yml once published.
 
-- doi: "10.21203/rs.3.rs-8662997/v1"
+- title: "Reconciling tradeoffs among hydropower, decarbonization, and freshwater biodiversity through carbon offsets"
+  authors: "Heilpern, S., Pacheco, F., Grimson, M., Sethi, S., Qu, Z., Almeida, R., Mao, Y., Miqueleiz, I., Wilcox, A., Peters, R., Garcia, M.C.M., Herrera-R, G.A., Chowdhury, A.K., Angarita, H., Deemer, B., McIntyre, P., Miranda, M., Rodrigo, H., Schmitt, R.J.P., et al."
+  year: 2026
+  journal: "Research Square"
   status: "Preprint"
+  doi: "10.21203/rs.3.rs-8662997/v1"
+
