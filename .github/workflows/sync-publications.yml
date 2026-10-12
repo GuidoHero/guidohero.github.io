@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: "17 9 * * 1"  # Mondays, 09:17 UTC
   workflow_dispatch:        # "Run workflow" button on the Actions tab
+  push:                     # TEMPORARY: run once on this branch before merge
+    branches: [claude/publication-list-update-7ao330]
+    paths: [.github/workflows/sync-publications.yml]
 
 permissions:
   contents: write
@@ -20,12 +23,12 @@ jobs:
       - run: python scripts/sync_orcid.py
       - name: Commit new publications
         run: |
-          if git diff --quiet -- _data/publications.yml; then
+          if git diff --quiet -- _data/; then
             echo "No new publications."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add _data/publications.yml
-          git commit -m "Add new publications from ORCID"
+          git add _data/
+          git commit -m "Update publications from ORCID and Crossref"
           git push

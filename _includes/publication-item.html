@@ -1,0 +1,12 @@
+{%- assign me = site.scholar_name | default: "Herrera-R, G.A." -%}
+{%- assign me_bold = "<strong>" | append: me | append: "</strong>" -%}
+{%- assign pub = include.pub -%}
+  <li>
+    {{ pub.authors | escape | replace: me, me_bold }}{% if pub.year %} ({{ pub.year }}){% endif %}.
+    {{ pub.title | markdownify | remove: "<p>" | remove: "</p>" | strip }}{% if pub.status %} [{{ pub.status }}]{% endif %}.
+    {%- if pub.journal and pub.journal != "" %}
+    <em>{{ pub.journal | escape }}{% if pub.volume %}, {{ pub.volume }}{% endif %}</em>{% if pub.issue %}({{ pub.issue }}){% endif %}{% if pub.pages %}, {{ pub.pages }}{% endif %}.
+    {%- endif %}
+    {%- if pub.doi %} <a href="https://doi.org/{{ pub.doi }}">https://doi.org/{{ pub.doi }}</a>{% elsif pub.url %} <a href="{{ pub.url }}">{{ pub.url }}</a>{% endif -%}
+    {%- if pub.pdf %}{% include pdf.html file=pub.pdf %}{% endif %}
+  </li>

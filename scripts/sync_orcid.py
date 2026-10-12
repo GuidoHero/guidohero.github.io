@@ -1,4 +1,9 @@
-"""Add new publications from ORCID to _data/publications.yml.
+"""Keep the publication data files up to date.
+
+1. _data/submitted.yml (preprints, papers in review or accepted): any entry
+   that has a `doi:` but no `title:` is filled in from Crossref, so adding a
+   preprint only takes its DOI.
+2. _data/publications.yml: new papers on the ORCID record are added.
 
 Reads the ORCID iD from _config.yml (`orcid:`), lists the works on that
 ORCID record, and fills in authors, volume and pages from Crossref.
@@ -22,6 +27,7 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = ROOT / "_config.yml"
 DATA = ROOT / "_data" / "publications.yml"
+SUBMITTED = ROOT / "_data" / "submitted.yml"
 
 # ORCID work types to import. Add "preprint" etc. to include more.
 INCLUDE_TYPES = {"journal-article"}
@@ -125,25 +131,66 @@ def pdf_name(authors_text, year, journal):
     return f"{first}{year or ''}_{abbrev}.pdf"
 
 
-def build_entry(work, me):
-    """Build a data-file entry from Crossref, or None if Crossref has no record."""
-    msg = fetch_crossref(work["doi"])
-    if not msg:
-        return None
+def crossref_fields(msg, me):
+    """Citation fields from a Crossref record (journal article or preprint)."""
     parts = (msg.get("issued") or msg.get("published") or {}).get("date-parts", [[None]])[0]
+    venue = ((msg.get("container-title") or [None])[0]
+             or ((msg.get("institution") or [{}])[0]).get("name")
+             or msg.get("group-title") or msg.get("publisher") or "")
     entry = {
-        "title": clean_title((msg.get("title") or [work["title"]])[0] or ""),
+        "title": clean_title((msg.get("title") or [""])[0]),
         "authors": format_authors(msg.get("author", []), me),
-        "year": parts[0] or work["year"],
-        "journal": html.unescape((msg.get("container-title") or [work["journal"] or ""])[0]),
+        "year": parts[0],
+        "journal": html.unescape(venue),
     }
     for key, value in (("volume", msg.get("volume")), ("issue", msg.get("issue")),
                        ("pages", msg.get("page") or msg.get("article-number"))):
         if value:
             entry[key] = str(value).replace("-", "–")
+    return entry
+
+
+def build_entry(work, me):
+    """Build a data-file entry from Crossref, or None if Crossref has no record."""
+    msg = fetch_crossref(work["doi"])
+    if not msg:
+        return None
+    entry = crossref_fields(msg, me)
+    entry["title"] = entry["title"] or clean_title(work["title"] or "")
+    entry["year"] = entry["year"] or work["year"]
+    entry["journal"] = entry["journal"] or work["journal"] or ""
     entry["doi"] = work["doi"]
     entry["pdf"] = pdf_name(entry["authors"], entry["year"], entry["journal"])
     return entry
+
+
+def fill_submitted(me, dry_run):
+    """Fill in entries of _data/submitted.yml that only have a DOI."""
+    if not SUBMITTED.exists():
+        return
+    header, blocks = split_entries(SUBMITTED.read_text())
+    changed = 0
+    for i, block in enumerate(blocks):
+        given = yaml.safe_load(block)[0]
+        if given.get("title") or not given.get("doi"):
+            continue
+        doi = normalize_doi(given["doi"])
+        msg = fetch_crossref(doi)
+        if not msg:
+            print(f"Submitted: {doi} not found in Crossref, will retry next run")
+            continue
+        entry = crossref_fields(msg, me)
+        if msg.get("type") == "posted-content":
+            entry["status"] = "Preprint"
+        entry.update({k: v for k, v in given.items() if v not in (None, "")})  # your values win
+        entry["doi"] = doi
+        blocks[i] = entry_to_yaml(entry) + "\n"
+        changed += 1
+        print(f"Submitted: filled in {entry['title']} ({doi})")
+    if changed:
+        output = header + "".join(blocks)
+        yaml.safe_load(output)
+        print(output) if dry_run else SUBMITTED.write_text(output)
 
 
 def entry_to_yaml(entry):
@@ -170,11 +217,13 @@ def split_entries(text):
 def main(argv):
     dry_run = "--dry-run" in argv
     config = yaml.safe_load(CONFIG.read_text())
+    me = config.get("scholar_name") or "Herrera-R, G.A."
+    fill_submitted(me, dry_run)
+
     orcid = (config.get("orcid") or "").strip()
     if not re.fullmatch(r"\d{4}-\d{4}-\d{4}-\d{3}[\dX]", orcid):
-        print("No valid `orcid:` set in _config.yml; nothing to do.")
+        print("No valid `orcid:` set in _config.yml; skipping ORCID.")
         return 0
-    me = config.get("scholar_name") or "Herrera-R, G.A."
 
     text = DATA.read_text()
     header, blocks = split_entries(text)

@@ -20,6 +20,13 @@ Cornell University – Ithaca, NY
 **B.Sc. Biology 2011-2015**\
   Pontifical Javeriana University - Bogotá, Colombia
 
+{% assign submitted = site.data.submitted | where_exp: "p", "p.title" %}
+{% if submitted.size > 0 %}
+## Preprints and submitted
+
+{% include publications.html list=submitted %}
+{% endif %}
+
 ## Publications
 
-{% include publications.html %}
+{% include publications.html list=site.data.publications by_year=true %}

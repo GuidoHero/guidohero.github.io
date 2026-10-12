@@ -1,0 +1,7 @@
+# Preprints, papers in review, and accepted papers, shown above Publications.
+# To add one, the DOI is enough; title, authors and year are filled in
+# automatically on the next sync. Optional: status ("Preprint", "In review",
+# "Accepted"), journal, pdf. Move an entry to publications.yml once published.
+
+- doi: "10.21203/rs.3.rs-8662997/v1"
+  status: "Preprint"
