@@ -1,0 +1,175 @@
+# Publication list shown on the home page, in display order (newest first).
+# Add a new paper by copying an entry. Only title/authors/year/journal are required.
+# Your name is bolded automatically. See README.md for details.
+
+- title: "Global importance of Amazonian freshwaters"
+  authors: "Jenkins, C.N., Athayde, S., Beveridge, C.F., Correa, S.B., Espinoza, J.-C., Heilpern, S.A., Herrera-R, G.A., Victoria-Lacy, L., Olivas, P., Oliveira, A., Piland, N.C., Utsunomiya, R., & Anderson, E.P."
+  year: 2025
+  journal: "Frontiers in Ecology and the Environment"
+  doi: "10.1002/fee.2868"
+  pdf: "Jenkins2025_FrontEcolEnviron.pdf"
+
+- title: "A baseline for assessing the ecological integrity of Western Amazon rivers"
+  authors: "Anderson, E.P., Encalada, A.C., Couto, T.B.A., Beveridge, C.F., Herrera-R, G.A., Heilpern, S.A., Almeida, R.M., Cañas-Alva, C., Correa, S.B., de Souza, L.S., Duponchelle, F., Garcia-Davila, C., Goulding, M., López-Casas, S., Maldonado-Ocampo, J.A., Miranda-Chumacero, G., Montoya, M., Piland, N.C., Victoria-Lacy, L., Varese, M., & Jenkins, C.N."
+  year: 2025
+  journal: "Communications Earth & Environment"
+  volume: "6"
+  pages: "623"
+  doi: "10.1038/s43247-025-01024-2"
+  pdf: "Anderson2025_CommunEarthEnviron.pdf"
+
+- title: "Assessing biocultural diversity across scales using ecological indicators"
+  authors: "Mateus-Aguilar, B., Díaz-Salazar, A.F., Andrade-Rivas, F., Batista, N.M., Cárdenas-Navarrete, A., Dávila Arenas, A., Hernandez, K.V., Herrera-R, G.A., Langhans, K.E., Levey, D.R., Neill, A., Nguyen, O., Ocampo-Peñuela, N., Suárez-Castro, A.F., Zapata, F., & Echeverri, A."
+  year: 2025
+  journal: "Ecological Indicators"
+  doi: "10.1016/j.ecolind.2025.113616"
+  pdf: "MateusAguilar2025_EcolIndic.pdf"
+
+- title: "Toward sustainable biocultural ecotourism: An integrated spatial analysis of cultural and biodiversity richness in Colombia"
+  authors: "Echeverri, A., Batista, N.M., Wolny, S., Herrera-R, G.A., Andrade-Rivas, F., Bailey, A., Cárdenas-Navarrete, A., Dávila Arenas, A., Díaz-Salazar, A.F., Hernandez, K.V., Langhans, K.E., Mateus-Aguilar, B.E., Levey, D., Neill, A., Nguyen, O., Suárez-Castro, A.F., Zapata, F., & Ocampo-Peñuela, N."
+  year: 2025
+  journal: "People and Nature"
+  volume: "7"
+  pages: "194–214"
+  doi: "10.1002/pan3.10755"
+  pdf: "Echeverri2025_PeopleNature.pdf"
+
+- title: "Nearly half of Colombian artisan craft plant species lack national and international vulnerability assessments"
+  authors: "Hernandez, K.V., Andrade-Rivas, F., Batista, N., Cárdenas-Navarrete, A., Dávila Arenas, A., Herrera-R, G.A., Langhans, K.E., Levey, D., Neill, A., Nguyen, O., Norzin, T., Ocampo-Peñuela, N., Sánchez Lopez, S., Wolny, S., Zapata, F., & Echeverri, A."
+  year: 2024
+  journal: "Ecosystems and People"
+  volume: "20"
+  issue: "1"
+  doi: "10.1080/26395916.2024.2420080"
+  pdf: "Hernandez2024_EcosystPeople.pdf"
+
+- title: "Translating science into actions to conserve Amazonian freshwaters"
+  authors: "Couto, T.B.A., Jenkins, C.N., Beveridge, C.F., Heilpern, S.A., Herrera-R, G.A., Piland, N.C., Leal, C.G., Zuanon, J., Doria, C.R.C., Montoya, M., Varese, M., Correa, S.B., Goulding, M., & Anderson, E.P."
+  year: 2024
+  journal: "Conservation Science and Practice"
+  doi: "10.1111/csp2.13241"
+  pdf: "Couto2024_ConservSciPract.pdf"
+
+- title: "A synthesis of the diversity of freshwater fish migrations in the Amazon basin"
+  authors: "Herrera-R, G.A., Heilpern, S., Couto, T.B.A., Victoria-Lacy, L., Duponchelle, F., Correa, S.B., Farah-Pérez, A., López-Casas, S., Cañas-Alva, C.M., Doria, C.R.C., & Anderson, E.P."
+  year: 2024
+  journal: "Fish and Fisheries"
+  volume: "25"
+  issue: "1"
+  pages: "114–133"
+  doi: "10.1111/faf.12795"
+  pdf: "HerreraR2024_FishFisheries.pdf"
+
+- title: "FreshLanDiv: A global database of freshwater biodiversity across different land uses"
+  authors: "Shen, M., Klink, R. van, Sagouis, A., Petsch, D., Abong’o, D., Alahuhta, J., Al-Shami, S., Armendáriz, L., Bae, M.-J., Begot, T., Belliard, J., Benstead, J., Bomfim, F., Bredenhand, E., Budnick, W., Callisto, M., Calvão, L., Camacho-Rozo, C., Cañedo-Argüelles, M., Carvalho, F., Chapman, J., Chapman, L., Chen, Q., Chernoff, B., Cibils-Martina, L., et al."
+  year: 2024
+  journal: "Global Ecology and Biogeography"
+  doi: "10.1111/geb.13917"
+  pdf: "Shen2024_GlobEcolBiogeogr.pdf"
+
+- title: "Functional diversity sustains multiple dietary nutrients supplied by freshwater fisheries"
+  authors: "Heilpern, S., Herrera-R, G.A., Fiorella, K., Moya, L., Flecker, A., & McIntyre, P.B."
+  year: 2023
+  journal: "Ecology Letters"
+  volume: "26"
+  issue: "12"
+  pages: "1887–1897"
+  doi: "10.1111/ele.14299"
+  pdf: "Heilpern2023_EcolLett.pdf"
+
+- title: "Accessibility and appeal jointly bias the inventory of Neotropical freshwater fish fauna"
+  authors: "Herrera-R, G.A., Tedesco, P., DoNascimiento, C., Jézéquel, C., & Giam, X."
+  year: 2023
+  journal: "Biological Conservation"
+  volume: "284"
+  pages: "110186"
+  doi: "10.1016/j.biocon.2023.110186"
+  pdf: "HerreraR2023_BiolConserv.pdf"
+
+- title: "FISHMORPH: A global database on morphological traits of freshwater fishes"
+  authors: "Brosse, S., Charpin, N., Su, G., Toussaint, A., Herrera-R, G.A., Tedesco, P.A., & Villéger, S."
+  year: 2021
+  journal: "Global Ecology and Biogeography"
+  volume: "30"
+  issue: "12"
+  pages: "2330–2336"
+  doi: "10.1111/geb.13395"
+  pdf: "Brosse2021_GlobEcolBiogeogr.pdf"
+
+- title: "Conservation of migratory fishes in the Amazon basin"
+  authors: "Duponchelle, F., Isaac, V.J., Rodrigues Da Costa Doria, C., Van Damme, P.A., Herrera-R, G.A., Anderson, E.P., Cruz, R.E.A., Hauser, M., Hermann, T.W., Agudelo, E., et al."
+  year: 2021
+  journal: "Aquatic Conservation: Marine and Freshwater Ecosystems"
+  volume: "31"
+  issue: "5"
+  pages: "1087–1105"
+  doi: "10.1002/aqc.3550"
+  pdf: "Duponchelle2021_AquatConserv.pdf"
+
+- title: "Toward an ecology of disasters: A primer for the pursuit of ecological research on disasters"
+  authors: "Gibson, N., Green, E., Herrera-R, G.A., Love, S., Turner, S., Weatherton, M., Faidiga, A., Luo, A., Ngoh, M., Shershen, E., et al."
+  year: 2021
+  journal: "Ecology and Society"
+  volume: "26"
+  issue: "4"
+  pages: "22"
+  doi: "10.5751/ES-12707-260422"
+  pdf: "Gibson2021_EcolSoc.pdf"
+
+- title: "The combined effects of climate change and river fragmentation on the distribution of Andean Amazon fishes"
+  authors: "Herrera-R, G.A., Oberdorff, T., Anderson, E.P., Brosse, S., Carvajal-Vallejos, F.M., Frederico, R.G., Hidalgo, M., Jézéquel, C., Maldonado, M., Maldonado-Ocampo, J.A., et al."
+  year: 2020
+  journal: "Global Change Biology"
+  volume: "26"
+  issue: "10"
+  pages: "5509–5523"
+  doi: "10.1111/gcb.15285"
+  pdf: "HerreraR2020_GlobChangeBiol.pdf"
+
+- title: "A global perspective on tropical montane rivers"
+  authors: "Encalada, A.C., Flecker, A.S., Poff, N.L., Suárez, E., Herrera-R, G.A., Ríos-Touma, B., Jumani, S., Larson, E.I., & Anderson, E.P."
+  year: 2019
+  journal: "Science"
+  volume: "365"
+  issue: "6458"
+  pages: "1124–1129"
+  doi: "10.1126/science.aax1682"
+  pdf: "Encalada2019_Science.pdf"
+
+- title: "Basin-scale impacts of hydropower development on the Mompós Depression wetlands, Colombia"
+  authors: "Angarita, H., Wickel, A.J., Sieber, J., Chavarro, J., Maldonado-Ocampo, J.A., Herrera-R, G.A., Delgado, J., & Purkey, D."
+  year: 2018
+  journal: "Hydrology and Earth System Sciences"
+  volume: "22"
+  issue: "5"
+  pages: "2839–2855"
+  doi: "10.5194/hess-22-2839-2018"
+  pdf: "Angarita2018_HydrolEarthSystSci.pdf"
+
+- title: "Fishes of the Cusiana River (Meta River basin, Colombia), with an identification key to its species"
+  authors: "Urbano-Bonilla, A., Ballen, G.A., Herrera-R, G.A., Zamudio, J., Herrera-Collazos, E.E., DoNascimiento, C., Prada-Pedreros, S., & Maldonado-Ocampo, J.A."
+  year: 2018
+  journal: "ZooKeys"
+  volume: "733"
+  pages: "65–97"
+  doi: "10.3897/zookeys.733.20159"
+  pdf: "UrbanoBonilla2018_ZooKeys.pdf"
+
+- title: "Checklist of the freshwater fishes of Colombia: A Darwin Core alternative to the updating problem"
+  authors: "DoNascimiento, C., Herrera-Collazos, E.E., Herrera-R, G.A., Ortega-Lara, A., Villa-Navarro, F.A., Oviedo, J.S.U., & Maldonado-Ocampo, J.A."
+  year: 2017
+  journal: "ZooKeys"
+  volume: "708"
+  pages: "25–138"
+  doi: "10.3897/zookeys.708.13897"
+  pdf: "DoNascimiento2017_ZooKeys.pdf"
+
+- title: "First record of *Amatitlania nigrofasciata* (Günther, 1867) (Cichliformes: Cichlidae) as introduced species in natural freshwaters of Colombia"
+  authors: "Herrera-R, G.A., Murcia-Castillo, M.A., & Prada-Pedreros, S."
+  year: 2016
+  journal: "Check List"
+  volume: "12"
+  issue: "4"
+  pages: "1932"
+  doi: "10.15560/12.4.1932"
+  pdf: "HerreraR2016_CheckList.pdf"

@@ -1,0 +1,21 @@
+{%- comment -%}
+  Renders the publication list from _data/publications.yml.
+  site.scholar_name is bolded in every author list.
+{%- endcomment -%}
+{%- assign me = site.scholar_name | default: "Herrera-R, G.A." -%}
+{%- assign me_bold = "<strong>" | append: me | append: "</strong>" -%}
+<style>
+  .publications li { margin-bottom: 1em; }
+  .publications strong { white-space: nowrap; }
+</style>
+<ul class="publications">
+{%- for pub in site.data.publications %}
+  <li>
+    {{ pub.authors | escape | replace: me, me_bold }} ({{ pub.year }}).
+    {{ pub.title | markdownify | remove: "<p>" | remove: "</p>" | strip }}.
+    <em>{{ pub.journal | escape }}{% if pub.volume %}, {{ pub.volume }}{% endif %}</em>{% if pub.issue %}({{ pub.issue }}){% endif %}{% if pub.pages %}, {{ pub.pages }}{% endif %}.
+    {%- if pub.doi %} <a href="https://doi.org/{{ pub.doi }}">https://doi.org/{{ pub.doi }}</a>{% endif -%}
+    {%- if pub.pdf %}{% include pdf.html file=pub.pdf %}{% endif %}
+  </li>
+{%- endfor %}
+</ul>

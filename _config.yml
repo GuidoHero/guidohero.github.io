@@ -1,6 +1,6 @@
 title: Guido A. Herrera-R
-logo: profile.jpg
+logo: images/profile.jpg
 description: Conservation and Freshwater Ecologist
 google_analytics: G-Q7HHRGFRL6
 theme: jekyll-theme-minimal
-exclude: [papers/README.md]
+scholar_name: "Herrera-R, G.A."
