@@ -64,3 +64,17 @@ repository's **Actions** tab → *Sync publications from ORCID* → *Run workflo
   allow Crossref to auto-update your record.
 - The sync script is `scripts/sync_orcid.py`
   (`python scripts/sync_orcid.py --dry-run` previews without saving).
+
+## Previewing changes before publishing
+
+One-time setup: install Ruby (Mac: `brew install ruby`; Windows: Ruby+Devkit
+from rubyinstaller.org), then run `gem install bundler`. In the site folder:
+
+```
+bundle install            # first time only
+bundle exec jekyll serve
+```
+
+Open <http://localhost:4000>. The page rebuilds when you save a file
+(edits to `_config.yml` need a restart). Press Ctrl+C to stop. A warning
+about "GitHub Metadata: No GitHub API authentication" is harmless.

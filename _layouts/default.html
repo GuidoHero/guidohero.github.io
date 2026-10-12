@@ -32,9 +32,8 @@
           <li>Biodiversity and Natural History</li>
         </ul>
 
-        {% if site.github.is_user_page %}
         <p class="view">
-          <a href="{{ site.github.owner_url }}">GitHub</a><br>
+          <a href="https://github.com/GuidoHero">GitHub</a><br>
           <a href="https://www.researchgate.net/profile/Guido-Herrera-R">ResearchGate</a><br>
           <a href="https://scholar.google.com/citations?user=Jlx12qoAAAAJ&amp;hl=en">Google Scholar</a><br>
           {% if site.orcid != "" and site.orcid %}<a href="https://orcid.org/{{ site.orcid }}">ORCID</a><br>{% endif %}
@@ -42,7 +41,6 @@
           <a href="mailto:guidohero@hotmail.com">guidohero[at]hotmail.com</a>
         </p>
         <p><a id="raw-url" href="{{ "/CV_GuidoA._Herrera-R.pdf" | relative_url }}">Curriculum Vitae</a></p>
-        {% endif %}
       </header>
       <section>
 
@@ -50,9 +48,6 @@
 
       </section>
       <footer>
-        {% if site.github.is_project_page %}
-        <p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
-        {% endif %}
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
