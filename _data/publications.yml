@@ -81,7 +81,14 @@
   doi: "10.1111/faf.12795"
   pdf: "HerreraR2024_FishFisheries.pdf"
 
-- doi: "10.1111/geb.13917"
+- title: "FreshLanDiv : A Global Database of Freshwater Biodiversity Across Different Land Uses"
+  authors: "Shen, M., van Klink, R., Sagouis, A., Petsch, D.K., Abong'o, D.A., Alahuhta, J., Al-Shami, S.A., Armendáriz, L.C., Bae, M., Begot, T.O., Belliard, J., Benstead, J.P., Bomfim, F.F., Bredenhand, E., Budnick, W.R., Callisto, M., Calvão, L.B., Camacho-Rozo, C.P., Cañedo-Argüelles, M., Carvalho, F.G., Chapman, J., Chapman, L., Chen, Q., Chernoff, B., Cibils-Martina, L., Closs, G.P., Corbi, J.J., Cunha, E.J., Cunico, A.M., De los Rios-Escalante, P., Dolédec, S., Dunck, B., Edegbene, A.O., Engman, A.C., Erős, T., Esteves, K.E., Faquim, R.C.P., Faria, A.P.J., Ferreira, C.M., Ferreira, M.C., Fierro, P., Freitas, P.V., Fugère, V., Garcia, T.D., Giam, X., Gonino, G.M.R., González-Trujillo, J.D., Gubiani, É.A., Hamada, N., Haro, R.J., Hepp, L.U., Herrera-R, G.A., Hill, M.J., Huda, A.N., Iniguez-Armijos, C., Jamoneau, A., Jonsson, M., Juen, L., Kadye, W.T., Kahirun, K., Kasangaki, A., Larson, C.A., Pereira, A.L., Leboucher, T., Leite, G.F.M., Li, D., Luiza-Andrade, A., Luke, S.H., Lundquist, M.J., Lupi, D., Machuca-Sepúlveda, J., Macuiane, M.A., Mancera-Rodriguez, N.J., Márquez, J.A., Martins, R.T., Masese, F.O., Meixler, M.S., Michelan, T.S., Monge-Salazar, M.J., Mruzek, J.L., Mugni, H.D., Ndagurwa, H.G.T., Niba, A., Nimptsch, J., Novelo-Gutiérrez, R., Ochieng, H., Pacheco-Díaz, R., Park, Y., Passy, S.I., Pearson, R.G., Peressin, A., Périco, E., Pires, M.M., Poulos, H., Principe, R.E., Prudente, B.S., Ríos-Touma, B., Ruaro, R., Schmitter-Soto, J.J., et al."
+  year: 2024
+  journal: "Global Ecology and Biogeography"
+  volume: "33"
+  issue: "12"
+  pages: "e13917"
+  doi: "10.1111/geb.13917"
   pdf: "Shen2024_GlobEcolBiogeogr.pdf"
 
 - title: "Functional diversity sustains multiple dietary nutrients supplied by freshwater fisheries"
@@ -113,13 +120,34 @@
   doi: "10.1111/geb.13395"
   pdf: "Brosse2021_GlobEcolBiogeogr.pdf"
 
-- doi: "10.1002/aqc.3550"
+- title: "Conservation of migratory fishes in the Amazon basin"
+  authors: "Duponchelle, F., Isaac, V.J., Rodrigues Da Costa Doria, C., Van Damme, P.A., Herrera-R, G.A., Anderson, E.P., Cruz, R.E.A., Hauser, M., Hermann, T.W., Agudelo, E., Bonilla-Castillo, C., Barthem, R., Freitas, C.E.C., García-Dávila, C., García-Vasquez, A., Renno, J., & Castello, L."
+  year: 2021
+  journal: "Aquatic Conservation: Marine and Freshwater Ecosystems"
+  volume: "31"
+  issue: "5"
+  pages: "1087–1105"
+  doi: "10.1002/aqc.3550"
   pdf: "Duponchelle2021_AquatConserv.pdf"
 
-- doi: "10.5751/ES-12707-260422"
+- title: "Toward an ecology of disasters: a primer for the pursuit of ecological research on disasters"
+  authors: "Gibson, N.L., Green, E.A., Herrera-R, G.A., Love, S.J., Turner, S.C., Weatherton, M., Faidiga, A.S., Luo, A.R., Ngoh, M.L., Shershen, E., Yoon, H.S., & Blum, M.J."
+  year: 2021
+  journal: "Ecology and Society"
+  volume: "26"
+  issue: "4"
+  pages: "art22"
+  doi: "10.5751/es-12707-260422"
   pdf: "Gibson2021_EcolSoc.pdf"
 
-- doi: "10.1111/gcb.15285"
+- title: "The combined effects of climate change and river fragmentation on the distribution of Andean Amazon fishes"
+  authors: "Herrera-R, G.A., Oberdorff, T., Anderson, E.P., Brosse, S., Carvajal-Vallejos, F.M., Frederico, R.G., Hidalgo, M., Jézéquel, C., Maldonado, M., Maldonado-Ocampo, J.A., Ortega, H., Radinger, J., Torrente-Vilara, G., Zuanon, J., & Tedesco, P.A."
+  year: 2020
+  journal: "Global Change Biology"
+  volume: "26"
+  issue: "10"
+  pages: "5509–5523"
+  doi: "10.1111/gcb.15285"
   pdf: "HerreraR2020_GlobChangeBiol.pdf"
 
 - title: "A global perspective on tropical montane rivers"
