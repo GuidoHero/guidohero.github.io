@@ -3,7 +3,15 @@
 # rest is filled in on the next sync. Or copy an entry and fill it in by hand.
 # Your name is bolded automatically.
 
-- doi: "10.1038/s44358-025-00115-z"
+- title: "The untapped potential of CMS for migratory freshwater fishes"
+  authors: "He, F., Hogan, Z., Jähnig, S.C., Bess, Z.A., Böhm, M., Griffith, P., Gundermann, D., Herrera-R, G.A., Miqueleiz, I., Murchie, K.J., Sayer, C.A., Thieme, M.L., Virtue, M., & Stoffers, T."
+  year: 2026
+  journal: "Nature Reviews Biodiversity"
+  volume: "2"
+  issue: "1"
+  pages: "4–6"
+  doi: "10.1038/s44358-025-00115-z"
+  pdf: "He2026_NatuReviBiod.pdf"
 
 - title: "Interplay Between Species Traits, Community and Environmental Context Governs Temporal Stability in Riverine Fish Populations"
   authors: "Herrera-R, G.A., Olden, J.D., Tedesco, P.A., Comte, L., & Giam, X."
