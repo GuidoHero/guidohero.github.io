@@ -121,7 +121,7 @@ def format_authors(authors, me):
 def pdf_name(authors_text, year, journal):
     first = re.sub(r"[^A-Za-z]", "", authors_text.split(",")[0]) or "Paper"
     words = [w for w in re.findall(r"[A-Za-z]+", journal or "") if w.lower() not in SMALL_WORDS]
-    abbrev = "".join(w[:5].capitalize() for w in words)[:30] or "Article"
+    abbrev = "".join(w[:4].capitalize() for w in words)[:30] or "Article"
     return f"{first}{year or ''}_{abbrev}.pdf"
 
 
