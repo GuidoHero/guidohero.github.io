@@ -2,6 +2,16 @@
 # Add a new paper by copying an entry. Only title/authors/year/journal are required.
 # Your name is bolded automatically. See README.md for details.
 
+- title: "Interplay Between Species Traits, Community and Environmental Context Governs Temporal Stability in Riverine Fish Populations"
+  authors: "Herrera-R, G.A., Olden, J.D., Tedesco, P.A., Comte, L., & Giam, X."
+  year: 2026
+  journal: "Ecology Letters"
+  volume: "29"
+  issue: "8"
+  pages: "e70443"
+  doi: "10.1111/ele.70443"
+  pdf: "HerreraR2026_EcoloLette.pdf"
+
 - title: "Global importance of Amazonian freshwaters"
   authors: "Jenkins, C.N., Athayde, S., Beveridge, C.F., Correa, S.B., Espinoza, J.-C., Heilpern, S.A., Herrera-R, G.A., Victoria-Lacy, L., Olivas, P., Oliveira, A., Piland, N.C., Utsunomiya, R., & Anderson, E.P."
   year: 2025
