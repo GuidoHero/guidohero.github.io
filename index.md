@@ -2,14 +2,14 @@
 layout: default
 ---
 
-<font size="5"> Current appointment </font>
+## Current appointment
 
 **Eric and Wendy Schmidt AI in Science Postdoctoral Fellow**\
 Department of Ecology and Evolutionary Biology\
 Department of Natural Resources and the Environment\
 Cornell University – Ithaca, NY
 
-<font size="5"> Education </font>
+## Education
 
 **Ph.D. Ecology & Evolutionary Biology 2020 - 2025**\
   The University of Tennessee - Knoxville, TN
@@ -20,7 +20,7 @@ Cornell University – Ithaca, NY
 **B.Sc. Biology 2011-2015**\
   Pontifical Javeriana University - Bogotá, Colombia
 
-<font size="5"> Publications </font> 
+## Publications
 
 - Jenkins, C.N., Athayde, S., Beveridge, C.F., Correa, S.B., Espinoza, J.-C., Heilpern, S.A., **Herrera-R, G.A.**, Victoria-Lacy, L., Olivas, P., Oliveira, A., Piland, N.C., Utsunomiya, R., & Anderson, E.P. (2025). Global importance of Amazonian freshwaters. *Frontiers in Ecology and the Environment.* <a href="https://doi.org/10.1002/fee.2868">https://doi.org/10.1002/fee.2868</a>{% include pdf.html file="Jenkins2025_FrontEcolEnviron.pdf" %}
 
