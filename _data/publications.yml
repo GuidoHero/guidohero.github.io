@@ -81,11 +81,7 @@
   doi: "10.1111/faf.12795"
   pdf: "HerreraR2024_FishFisheries.pdf"
 
-- title: "FreshLanDiv: A global database of freshwater biodiversity across different land uses"
-  authors: "Shen, M., Klink, R. van, Sagouis, A., Petsch, D., Abong’o, D., Alahuhta, J., Al-Shami, S., Armendáriz, L., Bae, M.-J., Begot, T., Belliard, J., Benstead, J., Bomfim, F., Bredenhand, E., Budnick, W., Callisto, M., Calvão, L., Camacho-Rozo, C., Cañedo-Argüelles, M., Carvalho, F., Chapman, J., Chapman, L., Chen, Q., Chernoff, B., Cibils-Martina, L., et al."
-  year: 2024
-  journal: "Global Ecology and Biogeography"
-  doi: "10.1111/geb.13917"
+- doi: "10.1111/geb.13917"
   pdf: "Shen2024_GlobEcolBiogeogr.pdf"
 
 - title: "Functional diversity sustains multiple dietary nutrients supplied by freshwater fisheries"
@@ -117,34 +113,13 @@
   doi: "10.1111/geb.13395"
   pdf: "Brosse2021_GlobEcolBiogeogr.pdf"
 
-- title: "Conservation of migratory fishes in the Amazon basin"
-  authors: "Duponchelle, F., Isaac, V.J., Rodrigues Da Costa Doria, C., Van Damme, P.A., Herrera-R, G.A., Anderson, E.P., Cruz, R.E.A., Hauser, M., Hermann, T.W., Agudelo, E., et al."
-  year: 2021
-  journal: "Aquatic Conservation: Marine and Freshwater Ecosystems"
-  volume: "31"
-  issue: "5"
-  pages: "1087–1105"
-  doi: "10.1002/aqc.3550"
+- doi: "10.1002/aqc.3550"
   pdf: "Duponchelle2021_AquatConserv.pdf"
 
-- title: "Toward an ecology of disasters: A primer for the pursuit of ecological research on disasters"
-  authors: "Gibson, N., Green, E., Herrera-R, G.A., Love, S., Turner, S., Weatherton, M., Faidiga, A., Luo, A., Ngoh, M., Shershen, E., et al."
-  year: 2021
-  journal: "Ecology and Society"
-  volume: "26"
-  issue: "4"
-  pages: "22"
-  doi: "10.5751/ES-12707-260422"
+- doi: "10.5751/ES-12707-260422"
   pdf: "Gibson2021_EcolSoc.pdf"
 
-- title: "The combined effects of climate change and river fragmentation on the distribution of Andean Amazon fishes"
-  authors: "Herrera-R, G.A., Oberdorff, T., Anderson, E.P., Brosse, S., Carvajal-Vallejos, F.M., Frederico, R.G., Hidalgo, M., Jézéquel, C., Maldonado, M., Maldonado-Ocampo, J.A., et al."
-  year: 2020
-  journal: "Global Change Biology"
-  volume: "26"
-  issue: "10"
-  pages: "5509–5523"
-  doi: "10.1111/gcb.15285"
+- doi: "10.1111/gcb.15285"
   pdf: "HerreraR2020_GlobChangeBiol.pdf"
 
 - title: "A global perspective on tropical montane rivers"

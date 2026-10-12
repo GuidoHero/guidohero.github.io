@@ -8,3 +8,5 @@ scholar_name: "Herrera-R, G.A."
 # added to _data/publications.yml every week and an ORCID link is shown.
 orcid: "0000-0001-5686-6362"
 exclude: [scripts, Gemfile, Gemfile.lock, vendor, .bundle]
+# Publication list: "condensed" (short author lists, DOI/PDF links) or "full"
+publication_style: condensed

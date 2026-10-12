@@ -31,7 +31,7 @@ SUBMITTED = ROOT / "_data" / "submitted.yml"
 
 # ORCID work types to import. Add "preprint" etc. to include more.
 INCLUDE_TYPES = {"journal-article"}
-MAX_AUTHORS = 20  # longer author lists are cut to the first 19 + "et al."
+MAX_AUTHORS = 100  # longer author lists are cut to the first 99 + "et al."
 USER_AGENT = "guidohero.github.io publication sync (mailto:gah234@cornell.edu)"
 SMALL_WORDS = {"of", "and", "the", "in", "for", "on", "a", "an", "&", "to"}
 

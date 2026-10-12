@@ -1,12 +1,46 @@
+{%- comment -%}
+  One publication. Style comes from site.publication_style:
+  "condensed" (default) shortens long author lists and uses short DOI/PDF
+  links; "full" prints every author and the full DOI URL.
+{%- endcomment -%}
 {%- assign me = site.scholar_name | default: "Herrera-R, G.A." -%}
 {%- assign me_bold = "<strong>" | append: me | append: "</strong>" -%}
 {%- assign pub = include.pub -%}
+{%- assign condensed = true -%}
+{%- if site.publication_style == "full" %}{% assign condensed = false %}{% endif -%}
+{%- if condensed -%}
+  {%- assign max_authors = site.publication_max_authors | default: 6 -%}
+  {%- assign names = pub.authors | replace: "., & ", "., " | replace: ", et al.", "" | split: "., " -%}
+  {%- if names.size > max_authors -%}
+    {%- assign shown = "" -%}
+    {%- assign me_shown = false -%}
+    {%- for n in names limit: 3 -%}
+      {%- assign nm = n | append: "." | replace: "..", "." -%}
+      {%- if nm == me %}{% assign me_shown = true %}{% endif -%}
+      {%- assign shown = shown | append: nm | append: ", " -%}
+    {%- endfor -%}
+    {%- assign authors_text = shown | escape | replace: me, me_bold | append: "…" -%}
+    {%- unless me_shown -%}
+      {%- assign authors_text = authors_text | append: " " | append: me_bold | append: ", …" -%}
+    {%- endunless -%}
+    {%- capture authors_text %}{{ authors_text }} ({% if pub.authors contains "et al." %}{{ names.size }}+{% else %}{{ names.size }}{% endif %} authors){% endcapture -%}
+  {%- else -%}
+    {%- assign authors_text = pub.authors | escape | replace: me, me_bold -%}
+  {%- endif -%}
+{%- else -%}
+  {%- assign authors_text = pub.authors | escape | replace: me, me_bold -%}
+{%- endif %}
   <li>
-    {{ pub.authors | escape | replace: me, me_bold }}{% if pub.year %} ({{ pub.year }}){% endif %}.
+    {%- if pub.year and include.show_year and condensed == false %}{% capture authors_text %}{{ authors_text }} ({{ pub.year }}){% endcapture %}{% endif %}
+    {{ authors_text | append: "." | replace: "..", "." }}
     {{ pub.title | markdownify | remove: "<p>" | remove: "</p>" | strip }}{% if pub.status %} [{{ pub.status }}]{% endif %}.
     {%- if pub.journal and pub.journal != "" %}
     <em>{{ pub.journal | escape }}{% if pub.volume %}, {{ pub.volume }}{% endif %}</em>{% if pub.issue %}({{ pub.issue }}){% endif %}{% if pub.pages %}, {{ pub.pages }}{% endif %}.
     {%- endif %}
-    {%- if pub.doi %} <a href="https://doi.org/{{ pub.doi }}">https://doi.org/{{ pub.doi }}</a>{% elsif pub.url %} <a href="{{ pub.url }}">{{ pub.url }}</a>{% endif -%}
+    {%- if condensed %}
+      {%- if pub.doi %} <a href="https://doi.org/{{ pub.doi }}">DOI</a>{% elsif pub.url %} <a href="{{ pub.url }}">Link</a>{% endif -%}
+    {%- else %}
+      {%- if pub.doi %} <a href="https://doi.org/{{ pub.doi }}">https://doi.org/{{ pub.doi }}</a>{% elsif pub.url %} <a href="{{ pub.url }}">{{ pub.url }}</a>{% endif -%}
+    {%- endif -%}
     {%- if pub.pdf %}{% include pdf.html file=pub.pdf %}{% endif %}
   </li>

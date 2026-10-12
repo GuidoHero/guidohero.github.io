@@ -12,14 +12,14 @@
 <h3 class="pub-year">{{ group.name }}</h3>
 <ul class="publications">
 {%- for pub in group.items %}
-{% include publication-item.html pub=pub %}
+{% include publication-item.html pub=pub show_year=false %}
 {%- endfor %}
 </ul>
 {%- endfor %}
 {%- else %}
 <ul class="publications">
 {%- for pub in pubs %}
-{% include publication-item.html pub=pub %}
+{% include publication-item.html pub=pub show_year=true %}
 {%- endfor %}
 </ul>
 {%- endif %}
