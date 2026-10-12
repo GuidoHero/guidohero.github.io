@@ -4,3 +4,7 @@ description: Conservation and Freshwater Ecologist
 google_analytics: G-Q7HHRGFRL6
 theme: jekyll-theme-minimal
 scholar_name: "Herrera-R, G.A."
+# ORCID iD (e.g. "0000-0002-1825-0097"). When set, new papers on ORCID are
+# added to _data/publications.yml every week and an ORCID link is shown.
+orcid: ""
+exclude: [scripts]

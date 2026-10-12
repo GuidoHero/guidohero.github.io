@@ -1,0 +1,31 @@
+name: Sync publications from ORCID
+
+on:
+  schedule:
+    - cron: "17 9 * * 1"  # Mondays, 09:17 UTC
+  workflow_dispatch:        # "Run workflow" button on the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - run: python scripts/sync_orcid.py
+      - name: Commit new publications
+        run: |
+          if git diff --quiet -- _data/publications.yml; then
+            echo "No new publications."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _data/publications.yml
+          git commit -m "Add new publications from ORCID"
+          git push
