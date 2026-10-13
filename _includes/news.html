@@ -1,8 +1,8 @@
 {%- comment -%}
-  Shows the newest site.news_count (default 5) items from _data/news.yml.
+  Shows the newest site.news_count (default 4) items from _data/news.yml.
   lang="es" uses each item's text_es (falls back to text) and Spanish months.
 {%- endcomment -%}
-{%- assign count = site.news_count | default: 5 -%}
+{%- assign count = site.news_count | default: 4 -%}
 {%- assign months_es = "ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic" | split: "," -%}
 <ul class="news">
 {%- for item in site.data.news limit: count %}
