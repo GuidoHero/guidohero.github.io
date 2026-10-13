@@ -1,0 +1,6 @@
+{%- comment -%} Formats a news date ("YYYY", "YYYY-MM" or "YYYY-MM-DD") in English or Spanish. {%- endcomment -%}
+{%- assign d = include.date | append: "" -%}
+{%- assign months_es = "ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic" | split: "," -%}
+{%- if d.size == 4 %}{{ d }}
+{%- elsif include.lang == "es" %}{% assign m = d | slice: 5, 2 | plus: -1 %}{{ months_es[m] }} {{ d | slice: 0, 4 }}
+{%- else %}{{ d | slice: 0, 7 | append: "-01" | date: "%b %Y" }}{% endif -%}

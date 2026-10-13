@@ -4,6 +4,8 @@
    `doi:` but no `title:` is filled in from Crossref, so adding a paper only
    takes its DOI.
 2. _data/publications.yml: new papers on the ORCID record are added.
+3. Each paper added or filled in above gets a "New paper" / "New preprint"
+   item at the top of _data/news.yml (in English and Spanish).
 
 Reads the ORCID iD from _config.yml (`orcid:`), lists the works on that
 ORCID record, and fills in authors, volume and pages from Crossref.
@@ -14,6 +16,7 @@ ORCID works without a DOI are skipped (they have no reliable author list).
 Usage: python scripts/sync_orcid.py [--dry-run]
 """
 
+import datetime
 import html
 import json
 import re
@@ -28,6 +31,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CONFIG = ROOT / "_config.yml"
 DATA = ROOT / "_data" / "publications.yml"
 SUBMITTED = ROOT / "_data" / "submitted.yml"
+NEWS = ROOT / "_data" / "news.yml"
 
 # ORCID work types to import. Add "preprint" etc. to include more.
 INCLUDE_TYPES = {"journal-article"}
@@ -165,11 +169,15 @@ def build_entry(work, me):
 
 
 def fill_from_doi(path, me, dry_run):
-    """Fill in entries that have a `doi:` but no `title:` from Crossref."""
+    """Fill in entries that have a `doi:` but no `title:` from Crossref.
+
+    Returns the entries that were filled in.
+    """
     if not path.exists():
-        return
+        return []
     header, blocks = split_entries(path.read_text())
     changed = 0
+    filled = []
     for i, block in enumerate(blocks):
         given = yaml.safe_load(block)[0]
         if given.get("title") or not given.get("doi"):
@@ -188,11 +196,45 @@ def fill_from_doi(path, me, dry_run):
             entry["pdf"] = pdf_name(entry["authors"], entry["year"], entry["journal"])
         blocks[i] = entry_to_yaml(entry) + "\n"
         changed += 1
+        filled.append(entry)
         print(f"{path.name}: filled in {entry['title']} ({doi})")
     if changed:
         output = header + "".join(blocks)
         yaml.safe_load(output)
         print(output) if dry_run else path.write_text(output)
+    return filled
+
+
+def add_news(entries, dry_run):
+    """Announce new papers/preprints at the top of _data/news.yml."""
+    if not entries or not NEWS.exists():
+        return
+    text = NEWS.read_text()
+    month = datetime.date.today().strftime("%Y-%m")
+    items = []
+    for e in entries:
+        doi = e.get("doi")
+        if doi and doi in text:
+            continue  # already announced
+        link = f"[{e['title']}](https://doi.org/{doi})" if doi else e["title"]
+        venue = e.get("journal") or ""
+        status = (e.get("status") or "").lower()
+        if status == "preprint":
+            en, es = f"New preprint: {link}.", f"Nuevo preprint: {link}."
+        elif status:
+            status_es = {"accepted": "aceptado", "in review": "en revisión"}.get(status, e["status"])
+            en, es = f"New paper {status}: {link}.", f"Nuevo artículo ({status_es}): {link}."
+        else:
+            en = f"New paper in *{venue}*: {link}." if venue else f"New paper: {link}."
+            es = f"Nuevo artículo en *{venue}*: {link}." if venue else f"Nuevo artículo: {link}."
+        items.append(entry_to_yaml({"date": month, "text": en, "text_es": es}) + "\n")
+    if not items:
+        return
+    header, blocks = split_entries(text)
+    output = header + "".join(items) + "".join(blocks)
+    yaml.safe_load(output)
+    print(output) if dry_run else NEWS.write_text(output)
+    print(f"news.yml: added {len(items)} item(s)")
 
 
 def entry_to_yaml(entry):
@@ -220,12 +262,12 @@ def main(argv):
     dry_run = "--dry-run" in argv
     config = yaml.safe_load(CONFIG.read_text())
     me = config.get("scholar_name") or "Herrera-R, G.A."
-    fill_from_doi(SUBMITTED, me, dry_run)
-    fill_from_doi(DATA, me, dry_run)
+    announce = fill_from_doi(SUBMITTED, me, dry_run) + fill_from_doi(DATA, me, dry_run)
 
     orcid = (config.get("orcid") or "").strip()
     if not re.fullmatch(r"\d{4}-\d{4}-\d{4}-\d{3}[\dX]", orcid):
         print("No valid `orcid:` set in _config.yml; skipping ORCID.")
+        add_news(announce, dry_run)
         return 0
 
     text = DATA.read_text()
@@ -255,6 +297,7 @@ def main(argv):
 
     if not new:
         print("Publication list is up to date.")
+        add_news(announce, dry_run)
         return 0
 
     # Insert each new paper above the first existing paper from the same or an earlier year.
@@ -273,6 +316,7 @@ def main(argv):
     else:
         DATA.write_text(output)
     print(f"Added {len(new)} publication(s).")
+    add_news(announce + new, dry_run)
     return 0
 
 

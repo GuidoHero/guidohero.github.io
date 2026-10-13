@@ -1,6 +1,8 @@
 # News items, newest first. The 4 most recent are shown on the home page.
 # date: "YYYY-MM" (or "YYYY"); text: Markdown, links allowed.
 # text_es: optional Spanish version (shown when the site is in Spanish).
+# image: optional photo, e.g. "images/news/2026-10-conference.jpg"; image_alt: short description.
+# Easiest way to add news: on GitHub, Issues → New issue → "Post news".
 
 - date: "2026-01"
   text: "New paper in *Nature Reviews Biodiversity*: [The untapped potential of CMS for migratory freshwater fishes](https://doi.org/10.1038/s44358-025-00115-z)."

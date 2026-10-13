@@ -1,0 +1,32 @@
+name: Post news
+description: Add a news item (with an optional photo) to the website
+title: "[News] "
+body:
+  - type: input
+    id: date
+    attributes:
+      label: Date
+      description: "YYYY-MM (e.g. 2026-10). Leave empty for this month."
+      placeholder: "2026-10"
+  - type: textarea
+    id: text
+    attributes:
+      label: News (English)
+      description: "One or two sentences. Markdown links work: [text](https://...)"
+    validations:
+      required: true
+  - type: textarea
+    id: text_es
+    attributes:
+      label: News (Spanish, optional)
+      description: "Shown when the site is in Spanish. If empty, the English text is used."
+  - type: textarea
+    id: photo
+    attributes:
+      label: Photo (optional)
+      description: "Drag and drop one photo here."
+  - type: input
+    id: photo_alt
+    attributes:
+      label: Photo description (optional)
+      description: "A few words describing the photo, for screen readers."

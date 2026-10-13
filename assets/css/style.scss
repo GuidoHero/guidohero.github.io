@@ -64,16 +64,46 @@ details.older-pubs {
 }
 
 // ---- News --------------------------------------------------------------------
+.news-date { color: $accent; font-weight: 600; white-space: nowrap; }
+
+.news-featured {
+  border: 1px solid rgba($accent, .25);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 0 1em;
+  background: rgba($accent, .04);
+  img {
+    display: block;
+    width: 100%;
+    max-height: 280px;
+    object-fit: cover;
+  }
+  .news-featured-body { padding: 12px 16px; }
+  .news-featured-body p { margin: 4px 0 0; font-size: 1.05em; color: #333; }
+}
+
 ul.news {
   list-style: none;
   padding-left: 0;
   li { margin-bottom: .5em; display: flex; gap: .8em; }
-  .news-date {
-    flex: 0 0 5.2em;
-    color: $accent;
-    font-weight: 600;
-  }
+  li .news-date { flex: 0 0 5.2em; }
 }
+
+ul.news-all li {
+  display: grid;
+  grid-template-columns: 5.2em 1fr;
+  column-gap: .8em;
+  align-items: start;
+  padding: .6em 0;
+  border-bottom: 1px solid #eee;
+  margin: 0;
+  .news-thumb { grid-column: 1 / -1; margin-bottom: .5em; }
+  .news-thumb img { width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; }
+  .news-date { grid-column: 1; }
+  .news-text { grid-column: 2; }
+}
+
+p.news-more { margin-top: .2em; font-weight: 600; }
 
 // ---- Language switch (EN | ES) -------------------------------------------------
 html:not([data-lang="es"]) .lang-es,
