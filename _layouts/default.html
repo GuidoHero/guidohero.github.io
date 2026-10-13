@@ -57,7 +57,7 @@
         </ul>
 
         <ul class="social">
-          <li><a href="mailto:gah234@cornell.edu" title="Email" aria-label="Email">{% include icon.html name="email" %}</a></li>
+          <li><a class="js-email" data-u="gah234" data-d="cornell.edu" title="Email" aria-label="Email">{% include icon.html name="email" %}</a></li>
           <li><a href="{{ "/CV_GuidoA._Herrera-R.pdf" | relative_url }}" title="CV" aria-label="CV">{% include icon.html name="cv" %}</a></li>
           <li><a href="https://github.com/GuidoHero" title="GitHub" aria-label="GitHub">{% include icon.html name="github" %}</a></li>
           <li><a href="https://www.linkedin.com/in/guidoherrera/" title="LinkedIn" aria-label="LinkedIn">{% include icon.html name="linkedin" %}</a></li>
@@ -67,7 +67,19 @@
           {%- endif %}
           <li><a href="https://www.researchgate.net/profile/Guido-Herrera-R" title="ResearchGate" aria-label="ResearchGate">{% include icon.html name="researchgate" %}</a></li>
         </ul>
-        <p class="contact"><a href="mailto:gah234@cornell.edu">gah234[at]cornell.edu</a></p>
+        <ul class="emails">
+          <li>
+            <span class="email-label">Cornell</span>
+            <a class="js-email" data-u="gah234" data-d="cornell.edu">gah234[at]cornell.edu</a>
+            <button type="button" class="copy-email" data-u="gah234" data-d="cornell.edu" title="Copy" aria-label="Copy Cornell email address">{% include icon.html name="copy" %}</button>
+          </li>
+          <li>
+            <span class="email-label">Personal</span>
+            <a class="js-email" data-u="guidohero" data-d="hotmail.com">guidohero[at]hotmail.com</a>
+            <button type="button" class="copy-email" data-u="guidohero" data-d="hotmail.com" title="Copy" aria-label="Copy personal email address">{% include icon.html name="copy" %}</button>
+          </li>
+        </ul>
+        <span class="copy-status" role="status" aria-live="polite"></span>
 
         <div class="appointment">
           <h4><span class="lang-en">Current appointment</span><span class="lang-es" lang="es">Cargo actual</span></h4>
@@ -80,9 +92,18 @@
         <div class="education">
           <h4><span class="lang-en">Education</span><span class="lang-es" lang="es">Formación académica</span></h4>
           <ul>
-            <li><strong>Ph.D.</strong> 2025 · <span class="lang-en">Univ. of Tennessee, Knoxville</span><span class="lang-es" lang="es">Univ. de Tennessee, Knoxville</span></li>
-            <li><strong>M.Sc.</strong> 2018 · <span class="lang-en">Univ. Toulouse III, France</span><span class="lang-es" lang="es">Univ. Toulouse III, Francia</span></li>
-            <li><strong>B.Sc.</strong> 2015 · Pontificia Univ. Javeriana, Colombia</li>
+            <li>
+              <strong>Ph.D.</strong> <span class="lang-en">Ecology &amp; Evolutionary Biology</span><span class="lang-es" lang="es">Ecología y Biología Evolutiva</span><br>
+              <span class="lang-en">Univ. of Tennessee, Knoxville</span><span class="lang-es" lang="es">Univ. de Tennessee, Knoxville</span> · 2025
+            </li>
+            <li>
+              <strong>M.Sc.</strong> <span class="lang-en">Modeling of Ecological Systems</span><span class="lang-es" lang="es">Modelación de Sistemas Ecológicos</span><br>
+              <span class="lang-en">Univ. Toulouse III, France</span><span class="lang-es" lang="es">Univ. Toulouse III, Francia</span> · 2018
+            </li>
+            <li>
+              <strong>B.Sc.</strong> <span class="lang-en">Biology</span><span class="lang-es" lang="es">Biología</span><br>
+              Pontificia Univ. Javeriana, Colombia · 2015
+            </li>
           </ul>
         </div>
       </header>
@@ -96,6 +117,7 @@
       </footer>
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+    {% capture check_icon %}{% include icon.html name="check" %}{% endcapture %}
     <script>
       (function () {
         var root = document.documentElement;
@@ -112,6 +134,33 @@
           });
         });
         apply(root.getAttribute("data-lang") || "en");
+
+        // Email addresses are assembled here so they are not in the page source.
+        document.querySelectorAll(".js-email").forEach(function (a) {
+          a.href = "mailto:" + a.dataset.u + "@" + a.dataset.d;
+        });
+        var status = document.querySelector(".copy-status");
+        document.querySelectorAll(".copy-email").forEach(function (btn) {
+          var original = btn.innerHTML;
+          btn.addEventListener("click", function () {
+            var address = btn.dataset.u + "@" + btn.dataset.d;
+            var done = function () {
+              btn.innerHTML = {{ check_icon | jsonify }};
+              btn.classList.add("copied");
+              if (status) status.textContent = root.getAttribute("data-lang") === "es" ? "Copiado" : "Copied";
+              setTimeout(function () {
+                btn.innerHTML = original;
+                btn.classList.remove("copied");
+                if (status) status.textContent = "";
+              }, 1500);
+            };
+            if (navigator.clipboard && window.isSecureContext) {
+              navigator.clipboard.writeText(address).then(done, function () { window.prompt("Email:", address); });
+            } else {
+              window.prompt("Email:", address);
+            }
+          });
+        });
       })();
     </script>
   </body>

@@ -25,7 +25,7 @@ header img {
 
 svg.icon { width: 1em; height: 1em; vertical-align: -0.125em; }
 
-p.tagline { margin: 8px 0 8px; }
+p.tagline { margin: 8px 0 8px; color: $accent-dark; font-weight: 600; font-size: 13.5px; }
 
 ul.tags {
   list-style: none;
@@ -45,7 +45,42 @@ ul.tags {
   }
 }
 
-p.contact { margin: 0 0 4px; font-size: 13px; }
+ul.emails {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  li { display: flex; align-items: center; gap: 6px; margin: 0; }
+  .email-label {
+    flex: 0 0 auto;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: #888;
+    width: 5.6em;
+  }
+  a { cursor: pointer; }
+}
+button.copy-email {
+  border: 0;
+  background: none;
+  padding: 2px 4px;
+  color: #999;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+  border-radius: 4px;
+  &:hover, &:focus-visible { color: $accent; background: rgba($accent, .08); }
+  &.copied { color: $accent; }
+}
+.copy-status {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
 
 ul.social {
   list-style: none;
@@ -154,7 +189,7 @@ html[data-lang="es"] .lang-en { display: none !important; }
   margin-top: 14px;
   h4 { margin: 0 0 6px; color: #1f2d2d; font-size: 15px; }
   ul { list-style: none; padding: 0; margin: 0; }
-  li { font-size: 13px; line-height: 1.45; margin-bottom: 9px; color: #666; }
+  li { font-size: 13px; line-height: 1.45; margin-bottom: 5px; color: #666; }
   strong { color: #222; }
   .years { white-space: nowrap; }
 }
