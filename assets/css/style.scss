@@ -45,12 +45,35 @@ ul.tags {
   }
 }
 
+button.email-toggle {
+  border: 0;
+  background: none;
+  padding: 0;
+  font-size: 1.5em;
+  line-height: 1;
+  color: #555;
+  cursor: pointer;
+  transition: color .15s;
+  &:hover, &:focus-visible, &[aria-expanded="true"] { color: $accent; }
+}
+
+.email-panel {
+  margin: 2px 0 10px;
+  padding: 8px 10px;
+  border: 1px solid rgba($accent, .25);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .08);
+  width: fit-content;
+}
+.email-panel[hidden] { display: none; }
+
 ul.emails {
   list-style: none;
   padding: 0;
   margin: 0;
   font-size: 13px;
-  li { display: flex; align-items: center; gap: 6px; margin: 0; }
+  li { display: flex; align-items: center; gap: 6px; margin: 0; line-height: 1.9; }
   .email-label {
     flex: 0 0 auto;
     font-size: 10px;

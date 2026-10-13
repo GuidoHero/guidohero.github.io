@@ -57,7 +57,7 @@
         </ul>
 
         <ul class="social">
-          <li><a class="js-email" data-u="gah234" data-d="cornell.edu" title="Email" aria-label="Email">{% include icon.html name="email" %}</a></li>
+          <li class="email-toggle-item"><button type="button" class="email-toggle" title="Email" aria-label="Email addresses" aria-expanded="false" aria-controls="email-panel">{% include icon.html name="email" %}</button></li>
           <li><a href="{{ "/CV_GuidoA._Herrera-R.pdf" | relative_url }}" title="CV" aria-label="CV">{% include icon.html name="cv" %}</a></li>
           <li><a href="https://github.com/GuidoHero" title="GitHub" aria-label="GitHub">{% include icon.html name="github" %}</a></li>
           <li><a href="https://www.linkedin.com/in/guidoherrera/" title="LinkedIn" aria-label="LinkedIn">{% include icon.html name="linkedin" %}</a></li>
@@ -67,18 +67,20 @@
           {%- endif %}
           <li><a href="https://www.researchgate.net/profile/Guido-Herrera-R" title="ResearchGate" aria-label="ResearchGate">{% include icon.html name="researchgate" %}</a></li>
         </ul>
-        <ul class="emails">
-          <li>
-            <span class="email-label">Cornell</span>
-            <a class="js-email" data-u="gah234" data-d="cornell.edu">gah234[at]cornell.edu</a>
-            <button type="button" class="copy-email" data-u="gah234" data-d="cornell.edu" title="Copy" aria-label="Copy Cornell email address">{% include icon.html name="copy" %}</button>
-          </li>
-          <li>
-            <span class="email-label">Personal</span>
-            <a class="js-email" data-u="guidohero" data-d="hotmail.com">guidohero[at]hotmail.com</a>
-            <button type="button" class="copy-email" data-u="guidohero" data-d="hotmail.com" title="Copy" aria-label="Copy personal email address">{% include icon.html name="copy" %}</button>
-          </li>
-        </ul>
+        <div id="email-panel" class="email-panel" hidden>
+          <ul class="emails">
+            <li>
+              <span class="email-label">Cornell</span>
+              <a class="js-email" data-u="gah234" data-d="cornell.edu">gah234[at]cornell.edu</a>
+              <button type="button" class="copy-email" data-u="gah234" data-d="cornell.edu" title="Copy" aria-label="Copy Cornell email address">{% include icon.html name="copy" %}</button>
+            </li>
+            <li>
+              <span class="email-label">Personal</span>
+              <a class="js-email" data-u="guidohero" data-d="hotmail.com">guidohero[at]hotmail.com</a>
+              <button type="button" class="copy-email" data-u="guidohero" data-d="hotmail.com" title="Copy" aria-label="Copy personal email address">{% include icon.html name="copy" %}</button>
+            </li>
+          </ul>
+        </div>
         <span class="copy-status" role="status" aria-live="polite"></span>
 
         <div class="appointment">
@@ -139,6 +141,23 @@
         document.querySelectorAll(".js-email").forEach(function (a) {
           a.href = "mailto:" + a.dataset.u + "@" + a.dataset.d;
         });
+        var toggle = document.querySelector(".email-toggle");
+        var panel = document.getElementById("email-panel");
+        function setPanel(open) {
+          panel.hidden = !open;
+          toggle.setAttribute("aria-expanded", String(open));
+        }
+        toggle.addEventListener("click", function (e) {
+          e.stopPropagation();
+          setPanel(panel.hidden);
+        });
+        document.addEventListener("click", function (e) {
+          if (!panel.hidden && !panel.contains(e.target)) setPanel(false);
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && !panel.hidden) { setPanel(false); toggle.focus(); }
+        });
+
         var status = document.querySelector(".copy-status");
         document.querySelectorAll(".copy-email").forEach(function (btn) {
           var original = btn.innerHTML;
