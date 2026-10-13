@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
   <head>
+    <script>
+      (function () {
+        var lang;
+        try { lang = localStorage.getItem("site-lang"); } catch (e) {}
+        if (!lang) lang = /^es\b/i.test(navigator.language || "") ? "es" : "en";
+        document.documentElement.setAttribute("data-lang", lang);
+      })();
+    </script>
     {% if site.google_analytics and jekyll.environment == 'production' %}
     {% include analytics.html %}
     {% endif %}
@@ -26,13 +34,27 @@
           <img src="{{ site.logo | relative_url }}" alt="Photo of {{ site.title }}" />
         {% endif %}
 
-        <p>{{ site.description | default: site.github.project_tagline }}</p>
+        <div class="lang-switch" role="group" aria-label="Language / Idioma">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="es" aria-pressed="false" lang="es">ES</button>
+        </div>
 
-        <ul class="text">
+        <p>
+          <span class="lang-en">{{ site.description | default: site.github.project_tagline }}</span>
+          <span class="lang-es" lang="es">Ecología de agua dulce y conservación</span>
+        </p>
+
+        <ul class="text lang-en">
           <li>Community Ecology and Macroecology</li>
           <li>Conservation and Sustainability of Freshwaters</li>
           <li>AI for Science and Sustainability</li>
           <li>Biodiversity and Natural History</li>
+        </ul>
+        <ul class="text lang-es" lang="es">
+          <li>Ecología de comunidades y macroecología</li>
+          <li>Conservación y sostenibilidad de las aguas dulces</li>
+          <li>IA para la ciencia y la sostenibilidad</li>
+          <li>Biodiversidad e historia natural</li>
         </ul>
 
         <ul class="social">
@@ -49,7 +71,7 @@
           <a href="mailto:gah234@cornell.edu">{% include icon.html name="email" %} gah234[at]cornell.edu</a><br>
           <a href="mailto:guidohero@hotmail.com">{% include icon.html name="email" %} guidohero[at]hotmail.com</a>
         </p>
-        <p><a class="cv-button" href="{{ "/CV_GuidoA._Herrera-R.pdf" | relative_url }}">{% include icon.html name="cv" %} Curriculum Vitae</a></p>
+        <p><a class="cv-button" href="{{ "/CV_GuidoA._Herrera-R.pdf" | relative_url }}">{% include icon.html name="cv" %} <span class="lang-en">Curriculum Vitae</span><span class="lang-es" lang="es">Hoja de vida (CV)</span></a></p>
       </header>
       <section>
 
@@ -61,5 +83,23 @@
       </footer>
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var buttons = document.querySelectorAll(".lang-switch button");
+        function apply(lang) {
+          root.setAttribute("data-lang", lang);
+          root.setAttribute("lang", lang === "es" ? "es" : "{{ site.lang | default: "en-US" }}");
+          buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.lang === lang)); });
+        }
+        buttons.forEach(function (b) {
+          b.addEventListener("click", function () {
+            apply(b.dataset.lang);
+            try { localStorage.setItem("site-lang", b.dataset.lang); } catch (e) {}
+          });
+        });
+        apply(root.getAttribute("data-lang") || "en");
+      })();
+    </script>
   </body>
 </html>

@@ -1,17 +1,23 @@
 # News items, newest first. The 5 most recent are shown on the home page.
-# date: "YYYY-MM" (or "YYYY-MM-DD"); text: Markdown, links allowed.
+# date: "YYYY-MM" (or "YYYY"); text: Markdown, links allowed.
+# text_es: optional Spanish version (shown when the site is in Spanish).
 
 - date: "2026-01"
   text: "New paper in *Nature Reviews Biodiversity*: [The untapped potential of CMS for migratory freshwater fishes](https://doi.org/10.1038/s44358-025-00115-z)."
+  text_es: "Nuevo artículo en *Nature Reviews Biodiversity*: [The untapped potential of CMS for migratory freshwater fishes](https://doi.org/10.1038/s44358-025-00115-z)."
 
 - date: "2026-01"
   text: "New preprint: [Reconciling tradeoffs among hydropower, decarbonization, and freshwater biodiversity through carbon offsets](https://doi.org/10.21203/rs.3.rs-8662997/v1)."
+  text_es: "Nuevo preprint: [Reconciling tradeoffs among hydropower, decarbonization, and freshwater biodiversity through carbon offsets](https://doi.org/10.21203/rs.3.rs-8662997/v1)."
 
 - date: "2025"
   text: "Joined Cornell University as an Eric and Wendy Schmidt AI in Science Postdoctoral Fellow."
+  text_es: "Inicié la beca posdoctoral Eric and Wendy Schmidt AI in Science en la Universidad de Cornell."
 
 - date: "2025"
   text: "Completed my Ph.D. in Ecology & Evolutionary Biology at the University of Tennessee, Knoxville."
+  text_es: "Terminé mi doctorado en Ecología y Biología Evolutiva en la Universidad de Tennessee, Knoxville."
 
 - date: "2023"
   text: "Received an [ESA Open Science award](https://esa.org/openscience/2023-annual-meeting/awards/award-winners/guido-herrera-rodriguez/) at the 2023 ESA Annual Meeting."
+  text_es: "Recibí un [premio de Ciencia Abierta de la ESA](https://esa.org/openscience/2023-annual-meeting/awards/award-winners/guido-herrera-rodriguez/) en la reunión anual de la ESA de 2023."

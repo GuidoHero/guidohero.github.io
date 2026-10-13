@@ -1,9 +1,18 @@
 {%- comment -%}
   Shows the newest site.news_count (default 5) items from _data/news.yml.
+  lang="es" uses each item's text_es (falls back to text) and Spanish months.
 {%- endcomment -%}
 {%- assign count = site.news_count | default: 5 -%}
+{%- assign months_es = "ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic" | split: "," -%}
 <ul class="news">
 {%- for item in site.data.news limit: count %}
-  <li><span class="news-date">{% assign d = item.date | append: "" %}{% if d.size == 4 %}{{ d }}{% else %}{{ d | slice: 0, 7 | append: "-01" | date: "%b %Y" }}{% endif %}</span> <span>{{ item.text | markdownify | remove: "<p>" | remove: "</p>" | strip }}</span></li>
+  {%- assign d = item.date | append: "" -%}
+  {%- assign text = item.text -%}
+  {%- if include.lang == "es" and item.text_es %}{% assign text = item.text_es %}{% endif %}
+  <li><span class="news-date">
+    {%- if d.size == 4 %}{{ d }}
+    {%- elsif include.lang == "es" %}{% assign m = d | slice: 5, 2 | plus: -1 %}{{ months_es[m] }} {{ d | slice: 0, 4 }}
+    {%- else %}{{ d | slice: 0, 7 | append: "-01" | date: "%b %Y" }}{% endif -%}
+  </span> <span>{{ text | markdownify | remove: "<p>" | remove: "</p>" | strip }}</span></li>
 {%- endfor %}
 </ul>

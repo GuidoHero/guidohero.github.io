@@ -23,7 +23,7 @@
     {%- unless me_shown -%}
       {%- assign authors_text = authors_text | append: " " | append: me_bold | append: ", …" -%}
     {%- endunless -%}
-    {%- capture authors_text %}{{ authors_text }} ({% if pub.authors contains "et al." %}{{ names.size }}+{% else %}{{ names.size }}{% endif %} authors){% endcapture -%}
+    {%- capture authors_text %}{{ authors_text }} ({% if pub.authors contains "et al." %}{{ names.size }}+{% else %}{{ names.size }}{% endif %} <span class="lang-en">authors</span><span class="lang-es" lang="es">autores</span>){% endcapture -%}
   {%- else -%}
     {%- assign authors_text = pub.authors | escape | replace: me, me_bold -%}
   {%- endif -%}

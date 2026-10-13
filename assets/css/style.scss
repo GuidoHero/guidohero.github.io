@@ -74,3 +74,29 @@ ul.news {
     font-weight: 600;
   }
 }
+
+// ---- Language switch (EN | ES) -------------------------------------------------
+html:not([data-lang="es"]) .lang-es,
+html[data-lang="es"] .lang-en { display: none !important; }
+
+.lang-switch {
+  display: flex;
+  width: fit-content;
+  border: 1px solid $accent;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 4px 0 10px;
+  button {
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .05em;
+    padding: 3px 10px;
+    border: 0;
+    background: transparent;
+    color: $accent;
+    cursor: pointer;
+  }
+  button[aria-pressed="true"] { background: $accent; color: #fff; }
+  button:focus-visible { outline: 2px solid $accent-dark; outline-offset: -2px; }
+}
