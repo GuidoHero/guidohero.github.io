@@ -9,14 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 {% seo %}
+    <link rel="icon" href="{{ "/images/favicon.svg" | relative_url }}" type="image/svg+xml">
+    <link rel="icon" href="{{ "/images/favicon-32.png" | relative_url }}" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="{{ "/images/apple-touch-icon.png" | relative_url }}">
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
-    <style>
-      .publications li { margin-bottom: 1em; }
-      .publications strong { white-space: nowrap; }
-    </style>
   </head>
   <body>
     <div class="wrapper">
@@ -36,16 +35,21 @@
           <li>Biodiversity and Natural History</li>
         </ul>
 
-        <p class="view">
-          <a href="https://github.com/GuidoHero">GitHub</a><br>
-          <a href="https://www.researchgate.net/profile/Guido-Herrera-R">ResearchGate</a><br>
-          <a href="https://www.linkedin.com/in/guidoherrera/">LinkedIn</a><br>
-          <a href="https://scholar.google.com/citations?user=Jlx12qoAAAAJ&amp;hl=en">Google Scholar</a><br>
-          {% if site.orcid != "" and site.orcid %}<a href="https://orcid.org/{{ site.orcid }}">ORCID</a><br>{% endif %}
-          <a href="mailto:gah234@cornell.edu">gah234[at]cornell.edu</a><br>
-          <a href="mailto:guidohero@hotmail.com">guidohero[at]hotmail.com</a>
+        <ul class="social">
+          <li><a href="https://github.com/GuidoHero" title="GitHub" aria-label="GitHub">{% include icon.html name="github" %}</a></li>
+          <li><a href="https://www.linkedin.com/in/guidoherrera/" title="LinkedIn" aria-label="LinkedIn">{% include icon.html name="linkedin" %}</a></li>
+          <li><a href="https://scholar.google.com/citations?user=Jlx12qoAAAAJ&amp;hl=en" title="Google Scholar" aria-label="Google Scholar">{% include icon.html name="scholar" %}</a></li>
+          {%- if site.orcid and site.orcid != "" %}
+          <li><a href="https://orcid.org/{{ site.orcid }}" title="ORCID" aria-label="ORCID">{% include icon.html name="orcid" %}</a></li>
+          {%- endif %}
+          <li><a href="https://www.researchgate.net/profile/Guido-Herrera-R" title="ResearchGate" aria-label="ResearchGate">{% include icon.html name="researchgate" %}</a></li>
+        </ul>
+
+        <p class="contact">
+          <a href="mailto:gah234@cornell.edu">{% include icon.html name="email" %} gah234[at]cornell.edu</a><br>
+          <a href="mailto:guidohero@hotmail.com">{% include icon.html name="email" %} guidohero[at]hotmail.com</a>
         </p>
-        <p><a id="raw-url" href="{{ "/CV_GuidoA._Herrera-R.pdf" | relative_url }}">Curriculum Vitae</a></p>
+        <p><a class="cv-button" href="{{ "/CV_GuidoA._Herrera-R.pdf" | relative_url }}">{% include icon.html name="cv" %} Curriculum Vitae</a></p>
       </header>
       <section>
 
@@ -53,7 +57,7 @@
 
       </section>
       <footer>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a> &mdash; Icons by <a href="https://fontawesome.com">Font Awesome</a></small></p>
       </footer>
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>

@@ -9,6 +9,10 @@ Department of Ecology and Evolutionary Biology\
 Department of Natural Resources and the Environment\
 Cornell University – Ithaca, NY
 
+## News
+
+{% include news.html %}
+
 ## Education
 
 **Ph.D. Ecology & Evolutionary Biology 2020 - 2025**\

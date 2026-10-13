@@ -1,0 +1,76 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+// ---- Site colors -----------------------------------------------------------
+$accent: #0f6e6a;       // freshwater teal
+$accent-dark: #0a4f4c;
+
+a { color: $accent; }
+a:hover, a:focus { color: $accent-dark; }
+header h1 a { color: $accent; }
+h2 { color: #1f2d2d; border-bottom: 2px solid rgba($accent, .15); padding-bottom: 4px; }
+h3.pub-year { color: $accent; margin: 1.4em 0 .4em; }
+
+// ---- Sidebar -----------------------------------------------------------------
+header img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  object-position: 50% 15%;
+  border-radius: 50%;
+  border: 3px solid rgba($accent, .25);
+}
+
+svg.icon { width: 1em; height: 1em; vertical-align: -0.125em; }
+
+ul.social {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  li { margin: 0; }
+  a { font-size: 1.5em; color: #555; transition: color .15s; }
+  a:hover, a:focus { color: $accent; }
+}
+
+p.contact { line-height: 1.8; }
+p.contact svg.icon { color: #777; margin-right: 4px; }
+
+a.cv-button {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 1px solid $accent;
+  border-radius: 6px;
+  font-weight: 600;
+}
+a.cv-button:hover, a.cv-button:focus { background: $accent; color: #fff; }
+
+// ---- Publications --------------------------------------------------------------
+.publications li { margin-bottom: 1em; }
+.publications strong { white-space: nowrap; }
+
+details.older-pubs {
+  margin-top: 1.2em;
+  summary {
+    cursor: pointer;
+    color: $accent;
+    font-weight: 600;
+    margin-bottom: .6em;
+  }
+}
+
+// ---- News --------------------------------------------------------------------
+ul.news {
+  list-style: none;
+  padding-left: 0;
+  li { margin-bottom: .5em; display: flex; gap: .8em; }
+  .news-date {
+    flex: 0 0 5.2em;
+    color: $accent;
+    font-weight: 600;
+  }
+}

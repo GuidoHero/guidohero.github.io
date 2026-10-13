@@ -10,3 +10,11 @@ orcid: "0000-0001-5686-6362"
 exclude: [scripts, Gemfile, Gemfile.lock, vendor, .bundle]
 # Publication list: "condensed" (short author lists, DOI/PDF links) or "full"
 publication_style: condensed
+# Years before this are folded under "Show older publications" (0 = show all)
+publication_collapse_before: 2020
+# Image shown when the site is shared (LinkedIn, Slack, email previews)
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /images/profile.jpg

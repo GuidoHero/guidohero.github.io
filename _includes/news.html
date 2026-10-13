@@ -1,0 +1,9 @@
+{%- comment -%}
+  Shows the newest site.news_count (default 5) items from _data/news.yml.
+{%- endcomment -%}
+{%- assign count = site.news_count | default: 5 -%}
+<ul class="news">
+{%- for item in site.data.news limit: count %}
+  <li><span class="news-date">{% assign d = item.date | append: "" %}{% if d.size == 4 %}{{ d }}{% else %}{{ d | slice: 0, 7 | append: "-01" | date: "%b %Y" }}{% endif %}</span> <span>{{ item.text | markdownify | remove: "<p>" | remove: "</p>" | strip }}</span></li>
+{%- endfor %}
+</ul>

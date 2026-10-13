@@ -1,14 +1,24 @@
 {%- comment -%}
   Renders a publication list from a data file.
   Usage: {% include publications.html list=site.data.publications by_year=true %}
-  by_year groups entries under year headings, newest first. site.scholar_name
+  by_year groups entries under year headings, newest first; years before
+  site.publication_collapse_before are folded under "Show older publications".
+  site.scholar_name
   is bolded in every author list. Entries without a title yet (e.g. a
   submitted paper waiting for the DOI sync) are skipped.
 {%- endcomment -%}
 {%- assign pubs = include.list | where_exp: "p", "p.title" -%}
 {%- if include.by_year -%}
 {%- assign groups = pubs | group_by: "year" | sort: "name" | reverse -%}
+{%- assign collapse_before = site.publication_collapse_before | default: 0 -%}
+{%- assign collapsed = false -%}
 {%- for group in groups %}
+{%- assign year = group.name | plus: 0 -%}
+{%- if collapsed == false and year < collapse_before %}
+{%- assign collapsed = true %}
+<details class="older-pubs">
+<summary>Show older publications (before {{ collapse_before }})</summary>
+{%- endif %}
 <h3 class="pub-year">{{ group.name }}</h3>
 <ul class="publications">
 {%- for pub in group.items %}
@@ -16,6 +26,9 @@
 {%- endfor %}
 </ul>
 {%- endfor %}
+{%- if collapsed %}
+</details>
+{%- endif %}
 {%- else %}
 <ul class="publications">
 {%- for pub in pubs %}
