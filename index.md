@@ -15,17 +15,6 @@ Cornell University – Ithaca, NY
 
 {% include news.html lang="en" %}
 
-## Education
-
-**Ph.D. Ecology & Evolutionary Biology 2020 - 2025**<br>
-  The University of Tennessee - Knoxville, TN
-
-**M.Sc. Modeling of Ecological Systems 2016 - 2018**<br>
-  University of Toulouse III Paul Sabatier - Toulouse, France
-
-**B.Sc. Biology 2011-2015**<br>
-  Pontifical Javeriana University - Bogotá, Colombia
-
 </div>
 
 <div class="lang-es" lang="es" markdown="1">
@@ -40,17 +29,6 @@ Universidad de Cornell – Ithaca, NY, EE. UU.
 ## Noticias
 
 {% include news.html lang="es" %}
-
-## Formación académica
-
-**Ph.D. Ecología y Biología Evolutiva 2020 - 2025**<br>
-  Universidad de Tennessee - Knoxville, TN, EE. UU.
-
-**M.Sc. Modelación de Sistemas Ecológicos 2016 - 2018**<br>
-  Universidad de Toulouse III Paul Sabatier - Toulouse, Francia
-
-**B.Sc. Biología 2011-2015**<br>
-  Pontificia Universidad Javeriana - Bogotá, Colombia
 
 </div>
 

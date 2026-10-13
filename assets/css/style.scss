@@ -130,3 +130,31 @@ html[data-lang="es"] .lang-en { display: none !important; }
   button[aria-pressed="true"] { background: $accent; color: #fff; }
   button:focus-visible { outline: 2px solid $accent-dark; outline-offset: -2px; }
 }
+
+// ---- Education (sidebar) -------------------------------------------------------
+.education {
+  margin-top: 18px;
+  h4 { margin: 0 0 6px; color: #1f2d2d; font-size: 15px; }
+  ul { list-style: none; padding: 0; margin: 0; }
+  li { font-size: 13px; line-height: 1.45; margin-bottom: 9px; color: #666; }
+  strong { color: #222; }
+  .years { white-space: nowrap; }
+}
+
+// The theme pins the sidebar; let it scroll when it is taller than the window,
+// and put the footer under the main column so the two never overlap.
+@media print, screen and (min-width: 961px) {
+  header {
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+    padding-right: 8px;
+    scrollbar-width: thin;
+  }
+  footer {
+    position: static;
+    float: right;
+    clear: right;
+    width: 500px;
+    margin-top: 2em;
+  }
+}
