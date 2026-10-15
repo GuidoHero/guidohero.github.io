@@ -4,6 +4,7 @@
    `doi:` but no `title:` is filled in from Crossref, so adding a paper only
    takes its DOI.
 2. _data/publications.yml: new papers on the ORCID record are added.
+Titles in Title Case are converted to sentence case (see sentence_case).
 3. Each paper added or filled in above gets a "New paper" / "New preprint"
    item at the top of _data/news.yml (in English and Spanish).
 
@@ -87,11 +88,58 @@ def normalize_title(title):
     return re.sub(r"[^a-z0-9]+", " ", title.lower()).strip()
 
 
+# Words kept capitalized when titles are converted to sentence case. Extend
+# with `title_keep_capitals:` in _config.yml.
+KEEP_CAPITALS = {
+    "Amazon", "Amazonia", "Amazonian", "Andes", "Andean", "Neotropical", "Neotropics",
+    "Colombia", "Colombian", "Orinoco", "Magdalena", "Meta", "Cusiana", "Mompós",
+    "South", "America", "American", "Latin", "Africa", "African", "Asia", "Asian",
+    "Europe", "European", "Mekong", "Congo", "Mississippi", "Tennessee",
+    "CMS", "IUCN", "Darwin", "Core", "Bayesian",
+}
+
+
+KEEP = set(KEEP_CAPITALS)
+
+
+def is_title_case(title):
+    """True if most longer words start with a capital letter."""
+    words = [w for w in re.findall(r"[A-Za-zÀ-ÿ'-]+", re.sub(r"\*[^*]*\*", "", title)) if len(w) > 3]
+    return len(words) >= 3 and sum(w[0].isupper() for w in words) / len(words) > 0.6
+
+
+def sentence_case(title, keep=KEEP_CAPITALS):
+    """Convert a Title Case title to sentence case, keeping acronyms, names and italics."""
+    if not is_title_case(title):
+        return title
+    out, first, in_italics = [], True, False
+    for token in re.split(r"(\s+)", title):
+        if not token or token.isspace():
+            out.append(token)
+            continue
+        if token.count("*") % 2:
+            in_italics = not in_italics
+            starts_italic = in_italics
+        else:
+            starts_italic = False
+        core = token.strip("*()[]\"'“”‘’.,;:!?")
+        if (first or in_italics or starts_italic or not core
+                or core in keep
+                or any(c.isupper() for c in core[1:])   # acronyms, FreshLanDiv, eDNA
+                or any(c.isdigit() for c in core)):
+            out.append(token)
+        else:
+            out.append(token.replace(core, core[0].lower() + core[1:], 1))
+        first = token.endswith(":") or token.endswith("?")
+    return "".join(out)
+
+
 def clean_title(title):
     """Crossref titles may contain HTML: keep italics as Markdown, drop the rest."""
     title = re.sub(r"</?(i|em)>", "*", title)
     title = re.sub(r"<[^>]+>", "", title)
     title = html.unescape(re.sub(r"\s+", " ", title)).strip()
+    title = re.sub(r"\s+([:;,?])", r"\1", title)  # "FreshLanDiv : A" -> "FreshLanDiv: A"
     return title.rstrip(".")
 
 
@@ -142,7 +190,7 @@ def crossref_fields(msg, me):
              or ((msg.get("institution") or [{}])[0]).get("name")
              or msg.get("group-title") or msg.get("publisher") or "")
     entry = {
-        "title": clean_title((msg.get("title") or [""])[0]),
+        "title": sentence_case(clean_title((msg.get("title") or [""])[0]), KEEP),
         "authors": format_authors(msg.get("author", []), me),
         "year": parts[0],
         "journal": html.unescape(venue),
@@ -273,6 +321,7 @@ def main(argv):
     dry_run = "--dry-run" in argv
     config = yaml.safe_load(CONFIG.read_text())
     me = config.get("scholar_name") or "Herrera-R, G.A."
+    KEEP.update(config.get("title_keep_capitals") or [])
     announce = fill_from_doi(SUBMITTED, me, dry_run) + fill_from_doi(DATA, me, dry_run)
 
     orcid = (config.get("orcid") or "").strip()

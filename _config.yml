@@ -9,6 +9,9 @@ scholar_name: "Herrera-R, G.A."
 # added to _data/publications.yml every week and an ORCID link is shown.
 orcid: "0000-0001-5686-6362"
 exclude: [scripts, Gemfile, Gemfile.lock, vendor, .bundle]
+# Extra words the publication sync keeps capitalized when it converts new
+# titles to sentence case (place names, acronyms...), e.g. [Pantanal, Xingu]
+title_keep_capitals: []
 # Publication list: "condensed" (short author lists, DOI/PDF links) or "full"
 publication_style: condensed
 # Years before this are folded under "Show older publications" (0 = show all)
