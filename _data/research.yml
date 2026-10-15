@@ -1,12 +1,15 @@
 # Research themes shown under the "Research" tab, in display order.
-# title / title_es, text / text_es (Markdown), optional image ("images/research/....jpg")
-# and image_alt. papers: DOIs from publications.yml or submitted.yml; their
+# title / title_es, text / text_es (Markdown), image and image_alt.
+# image: upload a photo with exactly this name to images/research/ and it
+# replaces the "Photo coming soon" placeholder (landscape, ~1200 px wide). papers: DOIs from publications.yml or submitted.yml; their
 # titles and links are filled in automatically.
 
 - title: "Migratory fishes of the Amazon"
   title_es: "Peces migratorios de la Amazonía"
   text: "Many Amazonian fishes travel hundreds to thousands of kilometers between feeding and spawning grounds. I synthesize what is known about these migrations and how to conserve them, from basin-wide reviews to international policy."
   text_es: "Muchos peces amazónicos recorren de cientos a miles de kilómetros entre sus zonas de alimentación y de reproducción. Sintetizo lo que se sabe sobre estas migraciones y cómo conservarlas, desde revisiones a escala de cuenca hasta la política internacional."
+  image: "images/research/migratory-fishes.jpg"
+  image_alt: "Migratory fish in an Amazonian river"
   papers:
     - "10.1111/faf.12795"
     - "10.1002/aqc.3550"
@@ -16,6 +19,8 @@
   title_es: "Cambio climático, represas y fragmentación de ríos"
   text: "I study how warming and dams combine to reshape where freshwater fishes can live, especially in Andean and Amazonian rivers, and how to balance hydropower and biodiversity."
   text_es: "Estudio cómo el calentamiento y las represas se combinan para cambiar dónde pueden vivir los peces de agua dulce, especialmente en ríos andinos y amazónicos, y cómo equilibrar la hidroenergía con la biodiversidad."
+  image: "images/research/climate-dams.jpg"
+  image_alt: "A dam on an Andean river"
   papers:
     - "10.1111/gcb.15285"
     - "10.1126/science.aax1682"
@@ -26,6 +31,8 @@
   title_es: "Datos de biodiversidad y vacíos de conocimiento"
   text: "Large, open databases underpin freshwater conservation. I contribute to global trait and land-use databases and study the biases that shape where we have sampled, and what we still do not know."
   text_es: "Las grandes bases de datos abiertas sustentan la conservación de las aguas dulces. Contribuyo a bases de datos globales de rasgos y usos del suelo, y estudio los sesgos que determinan dónde hemos muestreado y lo que aún desconocemos."
+  image: "images/research/biodiversity-data.jpg"
+  image_alt: "Fish specimens and field data"
   papers:
     - "10.1016/j.biocon.2023.110186"
     - "10.1111/geb.13395"
@@ -36,6 +43,8 @@
   title_es: "Comunidades de peces, estabilidad y personas"
   text: "Fish communities supply food and nutrients to millions of people. I examine how species traits and community context keep fish populations and the benefits they provide stable over time."
   text_es: "Las comunidades de peces aportan alimento y nutrientes a millones de personas. Examino cómo los rasgos de las especies y el contexto de la comunidad mantienen estables en el tiempo las poblaciones de peces y los beneficios que brindan."
+  image: "images/research/fish-communities.jpg"
+  image_alt: "Fishers with their catch"
   papers:
     - "10.1111/ele.70443"
     - "10.1111/ele.14299"

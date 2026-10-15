@@ -1,6 +1,7 @@
 {%- comment -%}
   Research themes from _data/research.yml, with their related papers looked up
   by DOI in publications.yml and submitted.yml. lang="es" uses the _es fields.
+  Themes whose image file is not uploaded yet show a placeholder.
 {%- endcomment -%}
 {%- assign all_pubs = site.data.publications | concat: site.data.submitted -%}
 <div class="research">
@@ -9,8 +10,18 @@
   {%- assign text = theme.text -%}
   {%- if include.lang == "es" %}{% assign title = theme.title_es | default: title %}{% assign text = theme.text_es | default: text %}{% endif %}
   <article class="research-theme">
-    {%- if theme.image %}
-    <img src="{{ theme.image | prepend: "/" | relative_url }}" alt="{{ theme.image_alt | default: "" | escape }}" loading="lazy">
+    {%- assign photo = nil -%}
+    {%- if theme.image -%}
+      {%- assign photo_path = theme.image | prepend: "/" -%}
+      {%- assign photo = site.static_files | where: "path", photo_path | first -%}
+    {%- endif %}
+    {%- if photo %}
+    <img class="research-photo" src="{{ photo_path | relative_url }}" alt="{{ theme.image_alt | default: "" | escape }}" loading="lazy">
+    {%- else %}
+    <div class="research-photo research-photo-placeholder" role="img" aria-label="{% if include.lang == "es" %}Foto próximamente{% else %}Photo coming soon{% endif %}">
+      {% include icon.html name="camera" %}
+      <span>{% if include.lang == "es" %}Foto próximamente{% else %}Photo coming soon{% endif %}</span>
+    </div>
     {%- endif %}
     <h3>{{ title }}</h3>
     <p>{{ text | markdownify | remove: "<p>" | remove: "</p>" | strip }}</p>
