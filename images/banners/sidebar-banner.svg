@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240" width="600" height="240" preserveAspectRatio="xMidYMid slice" role="img"><title>Placeholder: Andean river</title><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfe0ea"/><stop offset="1" stop-color="#eef7f6"/></linearGradient><linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3c8f9b"/><stop offset="1" stop-color="#1f5f6b"/></linearGradient></defs>
+<rect width="600" height="240" fill="url(#sky)"/>
+<path d="M0 240 L0 132.0 Q50.0 36.8 100.0 107.4 Q150.0 43.8 200.0 117.7 Q250.0 48.4 300.0 111.1 Q350.0 33.4 400.0 112.3 Q450.0 62.7 500.0 116.2 Q550.0 26.6 600.0 108.3 L600 240 Z" fill="#8fb2b8"/>
+<path d="M0 240 L0 163.2 Q50.0 105.4 100.0 144.4 Q150.0 115.1 200.0 145.8 Q250.0 125.8 300.0 148.2 Q350.0 128.0 400.0 151.5 Q450.0 117.2 500.0 155.5 Q550.0 107.2 600.0 160.0 L600 240 Z" fill="#4f7f6e"/>
+<path d="M0 196.8 Q180.0 168.0 330.0 192.0 T600 182.4 L600 240 L0 240 Z" fill="url(#water)"/>
+<path d="M0.0 204.4 q10.0 -3 20.0 0 t20.0 0" fill="none" stroke="#d9f1f2" stroke-width="1.4" stroke-linecap="round" opacity="0.7"/>
+<path d="M97.0 210.0 q19.2 -3 38.5 0 t38.5 0" fill="none" stroke="#d9f1f2" stroke-width="1.4" stroke-linecap="round" opacity="0.7"/>
+<path d="M194.0 215.6 q11.0 -3 22.0 0 t22.0 0" fill="none" stroke="#d9f1f2" stroke-width="1.4" stroke-linecap="round" opacity="0.7"/>
+<path d="M291.0 221.2 q20.2 -3 40.5 0 t40.5 0" fill="none" stroke="#d9f1f2" stroke-width="1.4" stroke-linecap="round" opacity="0.7"/>
+<path d="M388.0 226.8 q12.0 -3 24.0 0 t24.0 0" fill="none" stroke="#d9f1f2" stroke-width="1.4" stroke-linecap="round" opacity="0.7"/>
+<path d="M65.0 232.4 q21.2 -3 42.5 0 t42.5 0" fill="none" stroke="#d9f1f2" stroke-width="1.4" stroke-linecap="round" opacity="0.7"/>
+</svg>

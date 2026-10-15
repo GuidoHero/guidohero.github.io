@@ -32,8 +32,11 @@
         <button type="button" data-lang="es" aria-pressed="false" lang="es">ES</button>
       </div>
       <header>
+        {% if site.banners.sidebar and site.banners.sidebar != "" %}
+        <div class="cover"><img src="{{ site.banners.sidebar | prepend: "/" | relative_url }}" alt=""></div>
+        {% endif %}
         {% if site.logo %}
-          <img src="{{ site.logo | relative_url }}" alt="Photo of {{ site.title }}" />
+          <img class="avatar{% if site.banners.sidebar and site.banners.sidebar != "" %} over-cover{% endif %}" src="{{ site.logo | relative_url }}" alt="Photo of {{ site.title }}" />
         {% endif %}
 
         <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}{% if site.name_suffix %}<span class="name-suffix">, {{ site.name_suffix }}</span>{% endif %}</a></h1>
@@ -105,6 +108,7 @@
             </li>
           </ul>
         </div>
+        {% if site.fish_drawings %}<div class="side-fish">{% include fish.html kind="catfish" %}</div>{% endif %}
       </header>
       <section>
 
@@ -112,7 +116,7 @@
 
       </section>
       <footer>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a> &mdash; Icons by <a href="https://fontawesome.com">Font Awesome</a></small></p>
+        <p>{% if site.fish_drawings %}{% include fish.html kind="characin" %} {% endif %}<small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a> &mdash; Icons by <a href="https://fontawesome.com">Font Awesome</a></small></p>
       </footer>
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>

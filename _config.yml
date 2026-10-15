@@ -16,6 +16,14 @@ title_keep_capitals: []
 publication_style: condensed
 # Years before this are folded under "Show older publications" (0 = show all)
 publication_collapse_before: 2020
+# Banner images. Replace a file (same name, or point to a new .jpg) to use your
+# own photo; set a value to "" to turn that banner off.
+banners:
+  sidebar: images/banners/sidebar-banner.svg   # behind the profile photo (~600x240)
+  strip: images/banners/top-strip.svg          # above the section bar (~1000x150)
+  divider: images/banners/divider.svg          # thin band between sections (~1000x60)
+# Small fish line drawings (sidebar, section headings, footer)
+fish_drawings: true
 # Image shown when the site is shared (LinkedIn, Slack, email previews)
 defaults:
   - scope:
