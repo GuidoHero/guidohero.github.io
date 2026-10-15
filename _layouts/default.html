@@ -157,6 +157,19 @@
 
         // Section bar (News / Publications / Research): links scroll to each
         // section, and the link of the section being read is highlighted.
+        var nav = document.querySelector("nav.tabs");
+        var langSwitch = document.querySelector(".lang-switch");
+        if (nav && langSwitch) {
+          // Keep EN | ES reachable while scrolling: it rides in the pinned bar.
+          nav.appendChild(langSwitch);
+          nav.classList.add("with-lang");
+          var markStuck = function () {
+            nav.classList.toggle("stuck", nav.getBoundingClientRect().top <= 0 && window.scrollY > 0);
+          };
+          window.addEventListener("scroll", markStuck, { passive: true });
+          markStuck();
+        }
+
         var navLinks = document.querySelectorAll(".tabs [data-tab]");
         if (navLinks.length && "IntersectionObserver" in window) {
           var setActive = function (name) {

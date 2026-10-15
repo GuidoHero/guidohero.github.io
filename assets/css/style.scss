@@ -284,14 +284,14 @@ nav.tabs {
   top: 0;
   z-index: 3;
   display: flex;
+  align-items: center;
   gap: 4px;
-  margin: 0 90px 18px 0;            // leave room for the EN | ES switch
+  margin: 0 90px 10px 0;            // room for EN | ES until the script moves it into the bar
   padding-top: 6px;
   background: #fff;
-  border-bottom: 2px solid rgba($accent, .15);
+  transition: box-shadow .15s;
   a {
     padding: 6px 12px 7px;
-    margin-bottom: -2px;
     border-bottom: 3px solid transparent;
     color: #555;
     font-weight: 600;
@@ -299,11 +299,16 @@ nav.tabs {
   }
   a:hover, a:focus-visible { color: $accent; }
   a.active { color: $accent; border-bottom-color: $accent; }
+  &.with-lang { margin-right: 0; }
+  &.with-lang .lang-switch { position: static; margin: 0 0 0 auto; }
+  &.stuck { box-shadow: 0 6px 10px -8px rgba(0, 0, 0, .25); }
 }
-section.tab-panel {
+section.tab-panel,
+section section.tab-panel {          // the theme borders every <section> on small screens
   float: none;
   width: auto;
   padding: 0;
+  border: 0;
   scroll-margin-top: 60px;
   margin-bottom: 1.5em;
 }
