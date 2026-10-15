@@ -410,3 +410,74 @@ ul.research-papers {
   li { margin-bottom: 3px; }
   .research-venue { color: #888; font-style: italic; }
 }
+
+
+// ---- Natural style: fewer boxes, pills and tints ------------------------------------
+$serif: "Literata", Georgia, "Times New Roman", serif;
+$rule: #e4e4e1;
+
+header h1, h2, h3, .research-theme h3 { font-family: $serif; font-weight: 600; letter-spacing: 0; }
+header h1 { font-size: 22.5px; }
+h2 { color: #222; border-bottom: 1px solid $rule; font-size: 22px; }
+p.tagline { font-family: $serif; font-style: italic; font-weight: 400; color: #333; font-size: 14.5px; }
+
+// Interests as a plain line of text
+ul.tags {
+  display: block;
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #555;
+  li {
+    display: inline;
+    white-space: nowrap;
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    font-size: inherit;
+    color: inherit;
+  }
+  li:not(:last-child)::after { content: " ·"; color: #aaa; }
+}
+
+// CV as a plain link
+a.cv-button {
+  background: none;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  font-size: 14px;
+  color: $accent;
+  text-decoration: underline;
+  text-decoration-color: rgba($accent, .35);
+  text-underline-offset: 3px;
+  &:hover, &:focus-visible { background: none; color: $accent-dark; text-decoration-color: currentColor; }
+}
+
+// Links: quiet underline instead of color alone
+section a:not(.cv-button) {
+  text-decoration: underline;
+  text-decoration-color: rgba($accent, .3);
+  text-underline-offset: 2px;
+}
+section a:hover { text-decoration-color: currentColor; }
+nav.tabs a, nav.tabs a:hover { text-decoration: none; }
+
+// Dates and years in dark grey; teal stays for links, the name and the active tab
+.news-date, .pub-year, h3.pub-year { color: #333; }
+.pub-year-group + .pub-year-group { border-top-color: $rule; }
+
+// Highlighted news without the card
+.news-featured {
+  border: 0;
+  border-radius: 0;
+  background: none;
+  .news-featured-body { padding: 0 0 4px; }
+  .news-featured-body p { font-family: $serif; font-size: 17px; line-height: 1.45; color: #222; }
+  img { border-radius: 3px; margin-bottom: 8px; }
+}
+
+// Smaller corners
+header .cover, .banner-strip, .research-photo, .banner-divider { border-radius: 3px; }
+.research-photo-placeholder { border-style: solid; border-color: $rule; background: #f6f6f4; color: #999; }
+nav.tabs.stuck { box-shadow: 0 1px 0 $rule; }

@@ -17,6 +17,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 {% seo %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,400&display=swap">
     <link rel="icon" href="{{ "/images/favicon.svg" | relative_url }}" type="image/svg+xml">
     <link rel="icon" href="{{ "/images/favicon-32.png" | relative_url }}" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="{{ "/images/apple-touch-icon.png" | relative_url }}">
@@ -115,7 +118,7 @@
 
       </section>
       <footer>
-        <p>{% if site.fish_drawings %}{% include fish.html kind="characin" %} {% endif %}<small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a> &mdash; Icons by <a href="https://fontawesome.com">Font Awesome</a></small></p>
+        <p>{% if site.fish_drawings %}{% include fish.html kind="characin" %} {% endif %}<small><span class="lang-en">Last updated</span><span class="lang-es" lang="es">Actualizado</span> {{ site.time | date: "%Y-%m" }} &mdash; Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a> &mdash; Icons by <a href="https://fontawesome.com">Font Awesome</a></small></p>
       </footer>
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>

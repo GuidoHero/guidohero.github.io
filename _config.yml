@@ -21,8 +21,8 @@ publication_collapse_before: 2020
 banners:
   sidebar: images/banners/sidebar-banner.svg   # behind the profile photo (~600x240)
   strip: images/banners/top-strip.svg          # above the section bar (~1000x150)
-  divider: images/banners/divider.svg          # thin band between sections (~1000x60)
-# Small fish line drawings (section headings, footer)
+  divider: ""                                  # thin band between sections, e.g. images/banners/divider.svg
+# Small fish line drawing in the footer
 fish_drawings: true
 # Image shown when the site is shared (LinkedIn, Slack, email previews)
 defaults:
