@@ -1,0 +1,45 @@
+{%- comment -%}
+  Map of study regions from _data/sites.yml. Points are placed with the same
+  equirectangular projection as the base map (see study-map-base.svg):
+  x = (lon + 82) * 17.6471, y = (13 - lat) * 17.6471.
+  Clicking (or Enter/Space on) a point shows its papers in the panel below.
+{%- endcomment -%}
+{%- assign all_pubs = site.data.publications | concat: site.data.submitted -%}
+<figure class="study-map">
+  <svg viewBox="0 0 600 512" role="group" aria-label="Map of study regions in northern South America">
+    {% include study-map-base.svg %}
+    <g class="map-labels" aria-hidden="true">
+      <text x="459" y="371" class="lang-en">BRAZIL</text><text x="459" y="371" class="lang-es">BRASIL</text>
+      <text x="97" y="397" class="lang-en">PERU</text><text x="97" y="397" class="lang-es">PERÚ</text>
+      <text x="256" y="106">VENEZUELA</text>
+      <text x="150" y="208">COLOMBIA</text>
+      <text x="282" y="494">BOLIVIA</text>
+      <text x="28" y="275">ECUADOR</text>
+    </g>
+    {%- for s in site.data.sites %}
+    {%- assign x = s.lon | plus: 82 | times: 17.6471 | round: 1 -%}
+    {%- assign y = 13 | minus: s.lat | times: 17.6471 | round: 1 %}
+    <g class="map-site" data-site="{{ forloop.index0 }}" tabindex="0" role="button" aria-label="{{ s.name | escape }}" transform="translate({{ x }} {{ y }})">
+      <circle class="halo" r="13"/>
+      <circle class="dot" r="6.5"/>
+    </g>
+    {%- endfor %}
+  </svg>
+  <figcaption>
+    {%- for s in site.data.sites %}
+    <div class="map-panel" data-panel="{{ forloop.index0 }}">
+      <p class="map-panel-title"><span class="lang-en">{{ s.name }}</span><span class="lang-es" lang="es">{{ s.name_es | default: s.name }}</span></p>
+      <p class="map-panel-note"><span class="lang-en">{{ s.note }}</span><span class="lang-es" lang="es">{{ s.note_es | default: s.note }}</span></p>
+      <ul>
+        {%- for doi in s.papers %}
+          {%- assign pub = all_pubs | where: "doi", doi | first -%}
+          {%- if pub and pub.title %}
+        <li><a href="https://doi.org/{{ doi }}">{{ pub.title | markdownify | remove: "<p>" | remove: "</p>" | strip }}</a> <span class="research-venue">{{ pub.journal }}, {{ pub.year }}</span></li>
+          {%- endif %}
+        {%- endfor %}
+      </ul>
+    </div>
+    {%- endfor %}
+    <p class="map-hint"><span class="lang-en">Click a point to see the related papers.</span><span class="lang-es" lang="es">Haz clic en un punto para ver los artículos relacionados.</span></p>
+  </figcaption>
+</figure>

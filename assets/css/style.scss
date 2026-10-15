@@ -408,3 +408,31 @@ ul.research-papers {
   li { margin-bottom: 3px; }
   .research-venue { color: #888; font-style: italic; }
 }
+
+// ---- Study-site map --------------------------------------------------------------
+figure.study-map {
+  margin: 0 0 24px;
+  svg { display: block; width: 100%; height: auto; background: #f4f8f8; border-radius: 4px; }
+  .map-land path { fill: #e6ebe4; stroke: #fff; stroke-width: 1; }
+  .map-lakes path { fill: #bcd9dc; stroke: none; }
+  .map-rivers path { fill: none; stroke: #6fa9b1; stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; }
+  .map-labels text { font-size: 11px; letter-spacing: .12em; fill: #9aa69f; font-weight: 600; }
+  .map-site { cursor: pointer; outline: none; }
+  .map-site .dot { fill: #c96f1c; stroke: #fff; stroke-width: 2; }
+  .map-site .halo { fill: rgba(201, 111, 28, .18); }
+  .map-site:hover .dot, .map-site:focus-visible .dot { fill: #a5550f; }
+  .map-site:focus-visible .halo { stroke: $accent; stroke-width: 2; }
+  .map-site.selected .dot { fill: $accent; }
+  .map-site.selected .halo { fill: rgba($accent, .22); }
+  figcaption { margin-top: 10px; font-size: 13.5px; }
+  .map-panel-title { margin: 0; font-weight: 700; color: #222; }
+  .map-panel-note { margin: 0 0 4px; color: #666; }
+  .map-panel ul { margin: 0; padding-left: 18px; }
+  .map-panel li { margin-bottom: 3px; }
+  .map-hint { display: none; margin: 6px 0 0; font-size: 12px; color: #888; }
+  &.is-interactive .map-hint { display: block; }
+  &:not(.is-interactive) .map-panel { margin-bottom: 10px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .study-map .map-site .halo { transition: fill .15s; }
+}

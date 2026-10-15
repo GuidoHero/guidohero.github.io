@@ -1,0 +1,74 @@
+# Study regions shown on the map in the Research section.
+# lat / lon in decimal degrees (approximate region centres are fine).
+# papers: DOIs from publications.yml or submitted.yml; titles and links are
+# filled in automatically. name_es / note_es are the Spanish versions.
+
+- name: "Amazon basin"
+  name_es: "Cuenca amazónica"
+  lat: -3.1
+  lon: -60.0
+  note: "Basin-wide syntheses of fish migrations and freshwater conservation"
+  note_es: "Síntesis a escala de cuenca sobre migraciones de peces y conservación de aguas dulces"
+  papers:
+    - "10.1111/faf.12795"
+    - "10.1002/aqc.3550"
+    - "10.1038/s44358-025-00115-z"
+    - "10.1002/fee.2868"
+    - "10.1111/csp2.13241"
+
+- name: "Western Amazon rivers"
+  name_es: "Ríos de la Amazonía occidental"
+  lat: -4.5
+  lon: -75.5
+  note: "A baseline for the ecological integrity of rivers"
+  note_es: "Una línea base de la integridad ecológica de los ríos"
+  papers:
+    - "10.1038/s43247-025-01024-2"
+
+- name: "Andean Amazon"
+  name_es: "Amazonía andina"
+  lat: -1.5
+  lon: -78.0
+  note: "Climate change and river fragmentation"
+  note_es: "Cambio climático y fragmentación de ríos"
+  papers:
+    - "10.1111/gcb.15285"
+
+- name: "Mompós Depression, Magdalena River"
+  name_es: "Depresión Momposina, río Magdalena"
+  lat: 9.0
+  lon: -74.4
+  note: "Basin-scale impacts of hydropower on wetlands"
+  note_es: "Impactos de la hidroenergía en humedales a escala de cuenca"
+  papers:
+    - "10.5194/hess-22-2839-2018"
+
+- name: "Cusiana River, Meta basin"
+  name_es: "Río Cusiana, cuenca del Meta"
+  lat: 4.9
+  lon: -72.5
+  note: "Fish inventory and identification key"
+  note_es: "Inventario de peces y clave de identificación"
+  papers:
+    - "10.3897/zookeys.733.20159"
+
+- name: "Guavio River, Orinoco basin"
+  name_es: "Río Guavio, cuenca del Orinoco"
+  lat: 4.75
+  lon: -73.4
+  note: "First record of an introduced cichlid in Colombia"
+  note_es: "Primer registro de un cíclido introducido en Colombia"
+  papers:
+    - "10.15560/12.4.1932"
+
+- name: "Colombia"
+  name_es: "Colombia"
+  lat: 2.4
+  lon: -74.6
+  note: "National checklists and biocultural diversity"
+  note_es: "Listados nacionales y diversidad biocultural"
+  papers:
+    - "10.3897/zookeys.708.13897"
+    - "10.1002/pan3.10755"
+    - "10.1016/j.ecolind.2025.113616"
+    - "10.1080/26395916.2024.2420080"

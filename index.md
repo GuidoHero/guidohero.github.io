@@ -44,6 +44,8 @@ layout: default
 
 <h2>{% if site.fish_drawings %}{% include fish.html kind="tiny" %}{% endif %}<span class="lang-en">Research</span><span class="lang-es" lang="es">Investigación</span></h2>
 
+{% if site.data.sites %}{% include study-map.html %}{% endif %}
+
 <div class="lang-en">{% include research.html lang="en" %}</div>
 <div class="lang-es" lang="es">{% include research.html lang="es" %}</div>
 
