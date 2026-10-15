@@ -113,16 +113,14 @@ a.cv-button {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  padding: 6px 14px;
-  border-radius: 6px;
-  border: 1px solid rgba($accent, .35);
-  background: rgba($accent, .12);
-  color: $accent-dark;
   font-weight: 600;
   font-size: 14px;
-  text-decoration: none;
-  transition: background .15s, color .15s;
-  &:hover, &:focus-visible { background: rgba($accent, .22); color: $accent-dark; }
+  color: $accent;
+  text-decoration: underline;
+  text-decoration-color: rgba($accent, .35);
+  text-underline-offset: 3px;
+  transition: color .15s, text-decoration-color .15s;
+  &:hover, &:focus-visible { color: $accent-dark; text-decoration-color: currentColor; }
 }
 
 ul.emails {
