@@ -155,33 +155,30 @@
           if (e.key === "Escape" && !panel.hidden) { setPanel(false); toggle.focus(); }
         });
 
-        // Section tabs (News / Publications / Research). Without JavaScript
-        // all sections are simply shown one after another.
-        var tabs = document.querySelectorAll(".tabs [data-tab]");
-        if (tabs.length) {
-          root.classList.add("has-tabs");
-          var showTab = function (name, push) {
-            var found = false;
-            tabs.forEach(function (t) { if (t.dataset.tab === name) found = true; });
-            if (!found) name = tabs[0].dataset.tab;
-            tabs.forEach(function (t) {
-              var on = t.dataset.tab === name;
-              t.setAttribute("aria-selected", String(on));
-              t.classList.toggle("active", on);
+        // Section bar (News / Publications / Research): links scroll to each
+        // section, and the link of the section being read is highlighted.
+        var navLinks = document.querySelectorAll(".tabs [data-tab]");
+        if (navLinks.length && "IntersectionObserver" in window) {
+          var setActive = function (name) {
+            navLinks.forEach(function (l) {
+              var on = l.dataset.tab === name;
+              l.classList.toggle("active", on);
+              if (on) l.setAttribute("aria-current", "true"); else l.removeAttribute("aria-current");
             });
-            document.querySelectorAll(".tab-panel").forEach(function (p) {
-              p.hidden = p.dataset.panel !== name;
-            });
-            if (push) history.replaceState(null, "", "#" + name);
           };
-          tabs.forEach(function (t) {
-            t.addEventListener("click", function (e) {
-              e.preventDefault();
-              showTab(t.dataset.tab, true);
-            });
+          var visible = {};
+          var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) { visible[e.target.id] = e.isIntersecting; });
+            for (var i = 0; i < navLinks.length; i++) {
+              if (visible[navLinks[i].dataset.tab]) { setActive(navLinks[i].dataset.tab); break; }
+            }
+          }, { rootMargin: "-60px 0px -55% 0px" });
+          navLinks.forEach(function (l) {
+            var target = document.getElementById(l.dataset.tab);
+            if (target) observer.observe(target);
+            l.addEventListener("click", function () { setActive(l.dataset.tab); });
           });
-          window.addEventListener("hashchange", function () { showTab(location.hash.slice(1)); });
-          showTab(location.hash.slice(1));
+          setActive(navLinks[0].dataset.tab);
         }
 
         var status = document.querySelector(".copy-status");

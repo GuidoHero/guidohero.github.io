@@ -82,13 +82,14 @@ a.cv-button {
   gap: 7px;
   padding: 6px 14px;
   border-radius: 6px;
-  background: $accent;
-  color: #fff;
+  border: 1px solid rgba($accent, .35);
+  background: rgba($accent, .12);
+  color: $accent-dark;
   font-weight: 600;
   font-size: 14px;
   text-decoration: none;
-  transition: background .15s;
-  &:hover, &:focus-visible { background: $accent-dark; color: #fff; }
+  transition: background .15s, color .15s;
+  &:hover, &:focus-visible { background: rgba($accent, .22); color: $accent-dark; }
 }
 
 ul.emails {
@@ -274,11 +275,19 @@ html[data-lang="es"] .lang-en { display: none !important; }
   ul.news-compact li > span:last-child { white-space: normal; }
 }
 
-// ---- Section tabs (News | Publications | Research) ------------------------------
+// ---- Section bar (News | Publications | Research) -------------------------------
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
 nav.tabs {
+  position: sticky;
+  top: 0;
+  z-index: 3;
   display: flex;
   gap: 4px;
   margin: 0 90px 18px 0;            // leave room for the EN | ES switch
+  padding-top: 6px;
+  background: #fff;
   border-bottom: 2px solid rgba($accent, .15);
   a {
     padding: 6px 12px 7px;
@@ -291,9 +300,13 @@ nav.tabs {
   a:hover, a:focus-visible { color: $accent; }
   a.active { color: $accent; border-bottom-color: $accent; }
 }
-html:not(.has-tabs) nav.tabs { display: none; }
-html.has-tabs .tab-heading { display: none; }
-.tab-panel[hidden] { display: none; }
+section.tab-panel {
+  float: none;
+  width: auto;
+  padding: 0;
+  scroll-margin-top: 60px;
+  margin-bottom: 1.5em;
+}
 
 // ---- Research themes -------------------------------------------------------------
 .research-theme {
