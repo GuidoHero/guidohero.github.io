@@ -21,7 +21,7 @@ layout: default
 
 {% assign submitted = site.data.submitted | where_exp: "p", "p.title" %}
 {% if submitted.size > 0 %}
-<h2><span class="lang-en">Preprints and submitted</span><span class="lang-es" lang="es">Preprints y manuscritos enviados</span></h2>
+<h2><span class="lang-en">Preprints</span><span class="lang-es" lang="es">Preprints</span></h2>
 
 {% include publications.html list=submitted %}
 {% endif %}
