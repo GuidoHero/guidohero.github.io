@@ -32,11 +32,16 @@
         <button type="button" data-lang="es" aria-pressed="false" lang="es">ES</button>
       </div>
       <header>
-        <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}{% if site.name_suffix %}<span class="name-suffix">, {{ site.name_suffix }}</span>{% endif %}</a></h1>
-
         {% if site.logo %}
           <img src="{{ site.logo | relative_url }}" alt="Photo of {{ site.title }}" />
         {% endif %}
+
+        <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}{% if site.name_suffix %}<span class="name-suffix">, {{ site.name_suffix }}</span>{% endif %}</a></h1>
+
+        <p class="position" title="Depts. of Ecology &amp; Evolutionary Biology and Natural Resources &amp; the Environment">
+          <span class="lang-en">Eric and Wendy Schmidt AI in Science Postdoctoral Fellow</span><span class="lang-es" lang="es">Posdoctorado Eric and Wendy Schmidt AI in Science</span><br>
+          <strong><span class="lang-en">Cornell University</span><span class="lang-es" lang="es">Universidad de Cornell</span></strong> · Ithaca, NY
+        </p>
 
         <p class="tagline">
           <span class="lang-en">{{ site.description | default: site.github.project_tagline }}</span>
@@ -82,14 +87,6 @@
         </div>
         <p class="cv-link"><a class="cv-button" href="{{ "/CV_GuidoA._Herrera-R.pdf" | relative_url }}">{% include icon.html name="cv" %} <span class="lang-en">Curriculum Vitae (PDF)</span><span class="lang-es" lang="es">Hoja de vida (PDF)</span></a></p>
         <span class="copy-status" role="status" aria-live="polite"></span>
-
-        <div class="appointment">
-          <h4><span class="lang-en">Current appointment</span><span class="lang-es" lang="es">Cargo actual</span></h4>
-          <p>
-            <strong><span class="lang-en">Eric and Wendy Schmidt AI in Science Postdoctoral Fellow</span><span class="lang-es" lang="es">Posdoctorado Eric and Wendy Schmidt AI in Science</span></strong><br>
-            <span class="lang-en">Depts. of Ecology &amp; Evolutionary Biology and Natural Resources &amp; the Environment, Cornell University</span><span class="lang-es" lang="es">Deptos. de Ecología y Biología Evolutiva y de Recursos Naturales y Medio Ambiente, Universidad de Cornell</span>
-          </p>
-        </div>
 
         <div class="education">
           <h4><span class="lang-en">Education</span><span class="lang-es" lang="es">Formación académica</span></h4>
