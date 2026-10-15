@@ -23,7 +23,7 @@ layout: default
 {% if submitted.size > 0 %}
 <h2><span class="lang-en">Preprints</span><span class="lang-es" lang="es">Preprints</span></h2>
 
-{% include publications.html list=submitted %}
+{% include publications.html list=submitted by_year=true %}
 {% endif %}
 
 <h2><span class="lang-en">Publications</span><span class="lang-es" lang="es">Publicaciones</span></h2>

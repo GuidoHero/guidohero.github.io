@@ -19,12 +19,14 @@
 <details class="older-pubs">
 <summary><span class="lang-en">Show older publications (before {{ collapse_before }})</span><span class="lang-es" lang="es">Mostrar publicaciones anteriores (antes de {{ collapse_before }})</span></summary>
 {%- endif %}
-<h3 class="pub-year">{{ group.name }}</h3>
-<ul class="publications">
+<div class="pub-year-group">
+<div class="pub-year" aria-hidden="true">{{ group.name }}</div>
+<ul class="publications" aria-label="{{ group.name }}">
 {%- for pub in group.items %}
 {% include publication-item.html pub=pub show_year=false %}
 {%- endfor %}
 </ul>
+</div>
 {%- endfor %}
 {%- if collapsed %}
 </details>

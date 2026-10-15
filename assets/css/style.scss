@@ -13,7 +13,6 @@ header h1 a { color: $accent; }
 header h1 { font-size: 24px; white-space: nowrap; margin: 0 0 4px; }
 header h1 .name-suffix { font-size: .58em; font-weight: 600; }
 h2 { color: #1f2d2d; border-bottom: 2px solid rgba($accent, .15); padding-bottom: 4px; }
-h3.pub-year { color: $accent; margin: 1.4em 0 .4em; }
 
 // ---- Sidebar -----------------------------------------------------------------
 header img {
@@ -145,8 +144,34 @@ ul.social {
 
 
 // ---- Publications --------------------------------------------------------------
-.publications li { margin-bottom: 1em; }
+// Compact list: no bullets, year in a narrow left column beside its papers
+ul.publications {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 .4em;
+  font-size: 14.5px;
+  line-height: 1.5;
+  li { margin: 0 0 .65em; }
+}
 .publications strong { white-space: nowrap; }
+
+.pub-year-group {
+  display: grid;
+  grid-template-columns: 3.4em minmax(0, 1fr);
+  column-gap: .6em;
+  align-items: start;
+}
+.pub-year-group + .pub-year-group {
+  padding-top: .55em;
+  border-top: 1px solid rgba($accent, .12);
+}
+.pub-year {
+  color: $accent;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
 
 details.older-pubs {
   margin-top: 1.2em;
