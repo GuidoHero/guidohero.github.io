@@ -1,0 +1,29 @@
+{%- comment -%}
+  Research themes from _data/research.yml, with their related papers looked up
+  by DOI in publications.yml and submitted.yml. lang="es" uses the _es fields.
+{%- endcomment -%}
+{%- assign all_pubs = site.data.publications | concat: site.data.submitted -%}
+<div class="research">
+{%- for theme in site.data.research %}
+  {%- assign title = theme.title -%}
+  {%- assign text = theme.text -%}
+  {%- if include.lang == "es" %}{% assign title = theme.title_es | default: title %}{% assign text = theme.text_es | default: text %}{% endif %}
+  <article class="research-theme">
+    {%- if theme.image %}
+    <img src="{{ theme.image | prepend: "/" | relative_url }}" alt="{{ theme.image_alt | default: "" | escape }}" loading="lazy">
+    {%- endif %}
+    <h3>{{ title }}</h3>
+    <p>{{ text | markdownify | remove: "<p>" | remove: "</p>" | strip }}</p>
+    {%- if theme.papers %}
+    <ul class="research-papers">
+      {%- for doi in theme.papers %}
+        {%- assign pub = all_pubs | where: "doi", doi | first -%}
+        {%- if pub and pub.title %}
+      <li><a href="https://doi.org/{{ doi }}">{{ pub.title | markdownify | remove: "<p>" | remove: "</p>" | strip }}</a> <span class="research-venue">{{ pub.journal }}{% if pub.year %}, {{ pub.year }}{% endif %}</span></li>
+        {%- endif %}
+      {%- endfor %}
+    </ul>
+    {%- endif %}
+  </article>
+{%- endfor %}
+</div>

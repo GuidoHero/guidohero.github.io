@@ -265,6 +265,45 @@ html[data-lang="es"] .lang-en { display: none !important; }
 
 @media print, screen and (max-width: 960px) {
   .lang-switch { position: static; margin: 0 0 6px auto; }
+  nav.tabs { margin-right: 0; }
   // On narrow screens let the short news lines wrap rather than cut off.
   ul.news-compact li > span:last-child { white-space: normal; }
+}
+
+// ---- Section tabs (News | Publications | Research) ------------------------------
+nav.tabs {
+  display: flex;
+  gap: 4px;
+  margin: 0 90px 18px 0;            // leave room for the EN | ES switch
+  border-bottom: 2px solid rgba($accent, .15);
+  a {
+    padding: 6px 12px 7px;
+    margin-bottom: -2px;
+    border-bottom: 3px solid transparent;
+    color: #555;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  a:hover, a:focus-visible { color: $accent; }
+  a.active { color: $accent; border-bottom-color: $accent; }
+}
+html:not(.has-tabs) nav.tabs { display: none; }
+html.has-tabs .tab-heading { display: none; }
+.tab-panel[hidden] { display: none; }
+
+// ---- Research themes -------------------------------------------------------------
+.research-theme {
+  padding: 0 0 14px;
+  margin: 0 0 16px;
+  border-bottom: 1px solid #eee;
+  img { width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 8px; }
+  h3 { margin: 0 0 4px; color: $accent; }
+  p { margin: 0 0 6px; }
+}
+ul.research-papers {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13.5px;
+  li { margin-bottom: 3px; }
+  .research-venue { color: #888; font-style: italic; }
 }
