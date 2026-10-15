@@ -32,7 +32,7 @@
         <button type="button" data-lang="es" aria-pressed="false" lang="es">ES</button>
       </div>
       <header>
-        <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
+        <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}{% if site.name_suffix %}<span class="name-suffix">, {{ site.name_suffix }}</span>{% endif %}</a></h1>
 
         {% if site.logo %}
           <img src="{{ site.logo | relative_url }}" alt="Photo of {{ site.title }}" />
@@ -58,7 +58,6 @@
 
         <ul class="social">
           <li class="email-toggle-item"><button type="button" class="email-toggle" title="Email" aria-label="Email addresses" aria-expanded="false" aria-controls="email-panel">{% include icon.html name="email" %}</button></li>
-          <li><a href="{{ "/CV_GuidoA._Herrera-R.pdf" | relative_url }}" title="CV" aria-label="CV">{% include icon.html name="cv" %}</a></li>
           <li><a href="https://github.com/GuidoHero" title="GitHub" aria-label="GitHub">{% include icon.html name="github" %}</a></li>
           <li><a href="https://www.linkedin.com/in/guidoherrera/" title="LinkedIn" aria-label="LinkedIn">{% include icon.html name="linkedin" %}</a></li>
           <li><a href="https://scholar.google.com/citations?user=Jlx12qoAAAAJ&amp;hl=en" title="Google Scholar" aria-label="Google Scholar">{% include icon.html name="scholar" %}</a></li>
@@ -81,6 +80,7 @@
             </li>
           </ul>
         </div>
+        <p class="cv-link"><a class="cv-button" href="{{ "/CV_GuidoA._Herrera-R.pdf" | relative_url }}">{% include icon.html name="cv" %} <span class="lang-en">Curriculum Vitae (PDF)</span><span class="lang-es" lang="es">Hoja de vida (PDF)</span></a></p>
         <span class="copy-status" role="status" aria-live="polite"></span>
 
         <div class="appointment">

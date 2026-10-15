@@ -85,6 +85,11 @@ def main():
     text_es = one_line(fields.get("News (Spanish, optional)", ""))
     if text_es:
         item["text_es"] = text_es
+    for key, label in (("short", "Short version (optional)"),
+                       ("short_es", "Short version in Spanish (optional)")):
+        value = one_line(fields.get(label, ""))
+        if value:
+            item[key] = value
     photo = download_photo(fields.get("Photo (optional)", ""), os.environ.get("GITHUB_TOKEN"),
                            f"{date[:7]}-{slugify(text)}")
     if photo:

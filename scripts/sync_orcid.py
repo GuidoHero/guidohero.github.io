@@ -227,7 +227,18 @@ def add_news(entries, dry_run):
         else:
             en = f"New paper in *{venue}*: {link}." if venue else f"New paper: {link}."
             es = f"Nuevo artículo en *{venue}*: {link}." if venue else f"Nuevo artículo: {link}."
-        items.append(entry_to_yaml({"date": month, "text": en, "text_es": es}) + "\n")
+        doi_url = f"https://doi.org/{doi}" if doi else ""
+        if status == "preprint":
+            short, short_es = "New preprint.", "Nuevo preprint."
+            if doi:
+                short, short_es = f"New [preprint]({doi_url}).", f"Nuevo [preprint]({doi_url})."
+        elif venue:
+            short = f"New paper in [*{venue}*]({doi_url})." if doi else f"New paper in *{venue}*."
+            short_es = f"Nuevo artículo en [*{venue}*]({doi_url})." if doi else f"Nuevo artículo en *{venue}*."
+        else:
+            short, short_es = en, es
+        items.append(entry_to_yaml({"date": month, "text": en, "text_es": es,
+                                    "short": short, "short_es": short_es}) + "\n")
     if not items:
         return
     header, blocks = split_entries(text)

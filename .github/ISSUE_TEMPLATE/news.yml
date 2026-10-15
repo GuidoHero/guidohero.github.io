@@ -20,6 +20,15 @@ body:
     attributes:
       label: News (Spanish, optional)
       description: "Shown when the site is in Spanish. If empty, the English text is used."
+  - type: input
+    id: short
+    attributes:
+      label: Short version (optional)
+      description: "One short line for the home page list, e.g. \"Talk at the AFS meeting.\" If empty, the full text is used."
+  - type: input
+    id: short_es
+    attributes:
+      label: Short version in Spanish (optional)
   - type: textarea
     id: photo
     attributes:

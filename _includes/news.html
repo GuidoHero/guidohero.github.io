@@ -1,11 +1,12 @@
 {%- comment -%}
   News from _data/news.yml.
   Home page (default): the newest item is featured (with its photo, if it has
-  one), followed by the next items up to site.news_count (default 4) and a
-  link to the full archive. all=true: every item, with photo thumbnails.
+  one), followed by site.news_count (default 2) one-line items, using each
+  item's short/short_es text when present, and a link to the full archive.
+  all=true: every item, with photo thumbnails.
   lang="es" uses each item's text_es (falls back to text) and Spanish months.
 {%- endcomment -%}
-{%- assign count = site.news_count | default: 4 -%}
+{%- assign count = site.news_count | default: 2 -%}
 {%- assign es = false -%}
 {%- if include.lang == "es" %}{% assign es = true %}{% endif -%}
 {%- if include.all %}
@@ -35,11 +36,10 @@
   </div>
 </div>
 {%- endif %}
-{%- assign rest = count | minus: 1 %}
-<ul class="news">
-{%- for item in site.data.news offset: 1 limit: rest %}
-  {%- assign text = item.text -%}
-  {%- if es and item.text_es %}{% assign text = item.text_es %}{% endif %}
+<ul class="news news-compact">
+{%- for item in site.data.news offset: 1 limit: count %}
+  {%- assign text = item.short | default: item.text -%}
+  {%- if es %}{% assign text = item.short_es | default: item.text_es | default: text %}{% endif %}
   <li><span class="news-date">{% include news-date.html date=item.date lang=include.lang %}</span> <span>{{ text | markdownify | remove: "<p>" | remove: "</p>" | strip }}</span></li>
 {%- endfor %}
 </ul>

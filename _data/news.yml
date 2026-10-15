@@ -1,21 +1,30 @@
-# News items, newest first. The 4 most recent are shown on the home page.
+# News items, newest first. The home page highlights the newest one and lists the next 2.
 # date: "YYYY-MM" (or "YYYY"); text: Markdown, links allowed.
 # text_es: optional Spanish version (shown when the site is in Spanish).
+# short / short_es: optional one-line version for the compact list on the home page.
 # image: optional photo, e.g. "images/news/2026-10-conference.jpg"; image_alt: short description.
 # Easiest way to add news: on GitHub, Issues → New issue → "Post news".
 
 - date: "2026-01"
   text: "New paper in *Nature Reviews Biodiversity*: [The untapped potential of CMS for migratory freshwater fishes](https://doi.org/10.1038/s44358-025-00115-z)."
   text_es: "Nuevo artículo en *Nature Reviews Biodiversity*: [The untapped potential of CMS for migratory freshwater fishes](https://doi.org/10.1038/s44358-025-00115-z)."
+  short: "New paper in [*Nature Reviews Biodiversity*](https://doi.org/10.1038/s44358-025-00115-z)."
+  short_es: "Nuevo artículo en [*Nature Reviews Biodiversity*](https://doi.org/10.1038/s44358-025-00115-z)."
 
 - date: "2026-01"
   text: "New preprint: [Reconciling tradeoffs among hydropower, decarbonization, and freshwater biodiversity through carbon offsets](https://doi.org/10.21203/rs.3.rs-8662997/v1)."
   text_es: "Nuevo preprint: [Reconciling tradeoffs among hydropower, decarbonization, and freshwater biodiversity through carbon offsets](https://doi.org/10.21203/rs.3.rs-8662997/v1)."
+  short: "New preprint on [hydropower and fish biodiversity](https://doi.org/10.21203/rs.3.rs-8662997/v1)."
+  short_es: "Nuevo preprint sobre [hidroeléctricas y biodiversidad de peces](https://doi.org/10.21203/rs.3.rs-8662997/v1)."
 
 - date: "2025"
   text: "Joined Cornell University as an Eric and Wendy Schmidt AI in Science Postdoctoral Fellow."
   text_es: "Inicié la beca posdoctoral Eric and Wendy Schmidt AI in Science en la Universidad de Cornell."
+  short: "Joined Cornell as a Schmidt AI in Science Fellow."
+  short_es: "Inicié la beca Schmidt AI in Science en Cornell."
 
 - date: "2025"
   text: "Completed my Ph.D. in Ecology & Evolutionary Biology at the University of Tennessee, Knoxville."
   text_es: "Terminé mi doctorado en Ecología y Biología Evolutiva en la Universidad de Tennessee, Knoxville."
+  short: "Completed my Ph.D. at the University of Tennessee."
+  short_es: "Terminé mi doctorado en la Universidad de Tennessee."

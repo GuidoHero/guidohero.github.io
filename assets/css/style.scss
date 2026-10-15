@@ -10,6 +10,8 @@ $accent-dark: #0a4f4c;
 a { color: $accent; }
 a:hover, a:focus { color: $accent-dark; }
 header h1 a { color: $accent; }
+header h1 { font-size: 24px; white-space: nowrap; }
+header h1 .name-suffix { font-size: .58em; font-weight: 600; }
 h2 { color: #1f2d2d; border-bottom: 2px solid rgba($accent, .15); padding-bottom: 4px; }
 h3.pub-year { color: $accent; margin: 1.4em 0 .4em; }
 
@@ -68,6 +70,22 @@ button.email-toggle {
 }
 .email-panel[hidden] { display: none; }
 
+p.cv-link { margin: 4px 0 0; }
+a.cv-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: $accent;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background .15s;
+  &:hover, &:focus-visible { background: $accent-dark; color: #fff; }
+}
+
 ul.emails {
   list-style: none;
   padding: 0;
@@ -110,9 +128,10 @@ ul.social {
   padding: 0;
   margin: 0 0 6px;
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 13px;
-  li { margin: 0; }
+  li { margin: 0; display: flex; }
   a { font-size: 1.5em; color: #555; transition: color .15s; }
   a:hover, a:focus { color: $accent; }
 }
@@ -171,6 +190,14 @@ ul.news-all li {
   .news-thumb img { width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; }
   .news-date { grid-column: 1; }
   .news-text { grid-column: 2; }
+}
+
+// Home page: compact items stay on one line
+ul.news-compact li > span:last-child {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 p.news-more { margin-top: .2em; font-weight: 600; }
@@ -238,4 +265,6 @@ html[data-lang="es"] .lang-en { display: none !important; }
 
 @media print, screen and (max-width: 960px) {
   .lang-switch { position: static; margin: 0 0 6px auto; }
+  // On narrow screens let the short news lines wrap rather than cut off.
+  ul.news-compact li > span:last-child { white-space: normal; }
 }
