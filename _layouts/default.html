@@ -197,22 +197,45 @@
           setActive(navLinks[0].dataset.tab);
         }
 
-        // Study-site map: show the papers for the selected point.
-        var sites = document.querySelectorAll(".map-site");
-        if (sites.length) {
-          var map = document.querySelector(".study-map");
+        // Study-site map: World / South America views; show the papers for the
+        // selected point or "Global studies" button.
+        var map = document.querySelector(".study-map");
+        if (map) {
           map.classList.add("is-interactive");
+          var sites = map.querySelectorAll(".map-site");
+          var views = map.querySelectorAll(".map-view");
+          var viewBtns = map.querySelectorAll(".map-view-btn");
+          var setView = function (v) {
+            // SVG elements have no .hidden property, so set the attribute.
+            views.forEach(function (svg) {
+              if (svg.dataset.view === v) svg.removeAttribute("hidden"); else svg.setAttribute("hidden", "");
+            });
+            viewBtns.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.view === v)); });
+          };
           var pick = function (i) {
-            sites.forEach(function (s) { s.classList.toggle("selected", s.dataset.site === i); s.setAttribute("aria-pressed", String(s.dataset.site === i)); });
-            document.querySelectorAll(".map-panel").forEach(function (p) { p.hidden = p.dataset.panel !== i; });
+            sites.forEach(function (s) {
+              var on = s.dataset.site === i;
+              s.classList.toggle("selected", on);
+              if (s.getAttribute("role") === "button" || s.tagName === "BUTTON") s.setAttribute("aria-pressed", String(on));
+            });
+            map.querySelectorAll(".map-panel").forEach(function (p) { p.hidden = p.dataset.panel !== i; });
+          };
+          var activate = function (el, fn) {
+            el.addEventListener("click", fn);
+            el.addEventListener("keydown", function (e) {
+              if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); }
+            });
           };
           sites.forEach(function (s) {
-            s.addEventListener("click", function () { pick(s.dataset.site); });
-            s.addEventListener("keydown", function (e) {
-              if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(s.dataset.site); }
-            });
+            if (s.classList.contains("small")) return;      // world dots are decorative
+            activate(s, function () { pick(s.dataset.site); });
           });
-          pick("0");
+          viewBtns.forEach(function (b) { activate(b, function () { setView(b.dataset.view); }); });
+          var zoom = map.querySelector(".sa-zoom");
+          if (zoom) activate(zoom, function () { setView("sa"); });
+          setView("world");
+          var firstGlobal = map.querySelector(".map-global-btn");
+          pick(firstGlobal ? firstGlobal.dataset.site : "0");
         }
 
         var status = document.querySelector(".copy-status");

@@ -1,5 +1,7 @@
 # Study regions shown on the map in the Research section.
 # lat / lon in decimal degrees (approximate region centres are fine).
+# Entries with "global: true" have no single location: they are listed under
+# the "Global studies" button on the world view instead of as a point.
 # papers: DOIs from publications.yml or submitted.yml; titles and links are
 # filled in automatically. name_es / note_es are the Spanish versions.
 
@@ -72,3 +74,23 @@
     - "10.1002/pan3.10755"
     - "10.1016/j.ecolind.2025.113616"
     - "10.1080/26395916.2024.2420080"
+
+- name: "Global studies"
+  name_es: "Estudios globales"
+  global: true
+  note: "Global databases and syntheses of freshwater biodiversity"
+  note_es: "Bases de datos y síntesis globales sobre biodiversidad de agua dulce"
+  papers:
+    - "10.1111/geb.13395"
+    - "10.1111/geb.13917"
+    - "10.1126/science.aax1682"
+    - "10.1111/ele.70443"
+    - "10.5751/es-12707-260422"
+
+- name: "Neotropics"
+  name_es: "Neotrópico"
+  global: true
+  note: "Continental analyses of Neotropical freshwater fishes"
+  note_es: "Análisis continentales de peces de agua dulce neotropicales"
+  papers:
+    - "10.1016/j.biocon.2023.110186"

@@ -412,10 +412,29 @@ ul.research-papers {
 // ---- Study-site map --------------------------------------------------------------
 figure.study-map {
   margin: 0 0 24px;
+  .map-toolbar { display: none; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+  &.is-interactive .map-toolbar { display: flex; }
+  .map-toolbar button {
+    font: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer;
+    padding: 3px 10px; border-radius: 999px; border: 1px solid rgba($accent, .35);
+    background: #fff; color: $accent-dark;
+  }
+  .map-toolbar button[aria-pressed="true"], .map-toolbar button.selected { background: $accent; border-color: $accent; color: #fff; }
+  .map-toolbar button:focus-visible { outline: 2px solid $accent-dark; outline-offset: 2px; }
+  .map-global-btn { margin-left: auto; }
+  .map-global-btn + .map-global-btn { margin-left: 0; }
+  .map-global-btn .count { font-size: .85em; opacity: .75; }
+  .map-view[hidden] { display: none; }
+  .map-site.small .dot { fill: #c96f1c; stroke: #fff; stroke-width: .8; }
+  .sa-zoom { fill: rgba($accent, .06); stroke: $accent; stroke-width: 1; stroke-dasharray: 3 2; cursor: pointer; }
+  .sa-zoom:hover, .sa-zoom:focus-visible { fill: rgba($accent, .14); outline: none; }
+  .zoom-hint { font-size: 9px; font-weight: 700; fill: $accent; pointer-events: none; }
   svg { display: block; width: 100%; height: auto; background: #f4f8f8; border-radius: 4px; }
   .map-land path { fill: #e6ebe4; stroke: #fff; stroke-width: 1; }
   .map-lakes path { fill: #bcd9dc; stroke: none; }
-  .map-rivers path { fill: none; stroke: #6fa9b1; stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; }
+  .map-rivers path { fill: none; stroke: #6fa9b1; stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+  .map-view[data-view="world"] .map-land path { stroke-width: .4; }
+  .map-view[data-view="world"] .map-rivers path { stroke-width: .7; }
   .map-labels text { font-size: 11px; letter-spacing: .12em; fill: #9aa69f; font-weight: 600; }
   .map-site { cursor: pointer; outline: none; }
   .map-site .dot { fill: #c96f1c; stroke: #fff; stroke-width: 2; }

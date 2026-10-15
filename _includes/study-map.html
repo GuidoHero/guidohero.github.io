@@ -1,12 +1,33 @@
 {%- comment -%}
-  Map of study regions from _data/sites.yml. Points are placed with the same
-  equirectangular projection as the base map (see study-map-base.svg):
-  x = (lon + 82) * 17.6471, y = (13 - lat) * 17.6471.
-  Clicking (or Enter/Space on) a point shows its papers in the panel below.
+  Map of study regions from _data/sites.yml, with two views:
+  - World:          x = (lon + 180) * 1.6667,  y = (84 - lat) * 1.6667  (world-map-base.svg)
+  - South America:  x = (lon + 82) * 17.6471,  y = (13 - lat) * 17.6471 (study-map-base.svg)
+  Entries with global: true are listed under the "Global studies" button.
+  Clicking (or Enter/Space on) a point or button shows its papers below.
 {%- endcomment -%}
 {%- assign all_pubs = site.data.publications | concat: site.data.submitted -%}
+{%- assign global_sites = site.data.sites | where: "global", true -%}
 <figure class="study-map">
-  <svg viewBox="0 0 600 512" role="group" aria-label="Map of study regions in northern South America">
+  <div class="map-toolbar" role="group" aria-label="Map view">
+    <button type="button" class="map-view-btn" data-view="world"><span class="lang-en">World</span><span class="lang-es" lang="es">Mundo</span></button>
+    <button type="button" class="map-view-btn" data-view="sa"><span class="lang-en">South America</span><span class="lang-es" lang="es">Suramérica</span></button>
+    {%- for s in site.data.sites %}{% if s.global %}
+    <button type="button" class="map-global-btn map-site" data-site="{{ forloop.index0 }}"><span class="lang-en">{{ s.name }}</span><span class="lang-es" lang="es">{{ s.name_es | default: s.name }}</span> <span class="count">{{ s.papers.size }}</span></button>
+    {%- endif %}{% endfor %}
+  </div>
+
+  <svg class="map-view" data-view="world" viewBox="0 0 600 237" role="group" aria-label="World map of study regions">
+    {% include world-map-base.svg %}
+    <rect class="sa-zoom" x="{{ -82 | plus: 180 | times: 1.6667 | round: 1 }}" y="{{ 84 | minus: 13 | times: 1.6667 | round: 1 }}" width="{{ 34 | times: 1.6667 | round: 1 }}" height="{{ 29 | times: 1.6667 | round: 1 }}" rx="2" tabindex="0" role="button" aria-label="Zoom to South America"/>
+    {%- for s in site.data.sites %}{% unless s.global %}
+    {%- assign x = s.lon | plus: 180 | times: 1.6667 | round: 1 -%}
+    {%- assign y = 84 | minus: s.lat | times: 1.6667 | round: 1 %}
+    <g class="map-site small" data-site="{{ forloop.index0 }}" transform="translate({{ x }} {{ y }})" aria-hidden="true"><circle class="dot" r="2.6"/></g>
+    {%- endunless %}{% endfor %}
+    <text class="zoom-hint" x="{{ -48 | plus: 180 | times: 1.6667 | plus: 6 | round: 1 }}" y="{{ 84 | minus: 13 | times: 1.6667 | plus: 12 | round: 1 }}"><tspan class="lang-en">Zoom in ›</tspan><tspan class="lang-es">Acercar ›</tspan></text>
+  </svg>
+
+  <svg class="map-view" data-view="sa" viewBox="0 0 600 512" role="group" aria-label="Map of study regions in northern South America">
     {% include study-map-base.svg %}
     <g class="map-labels" aria-hidden="true">
       <text x="459" y="371" class="lang-en">BRAZIL</text><text x="459" y="371" class="lang-es">BRASIL</text>
@@ -16,15 +37,16 @@
       <text x="282" y="494">BOLIVIA</text>
       <text x="28" y="275">ECUADOR</text>
     </g>
-    {%- for s in site.data.sites %}
+    {%- for s in site.data.sites %}{% unless s.global %}
     {%- assign x = s.lon | plus: 82 | times: 17.6471 | round: 1 -%}
     {%- assign y = 13 | minus: s.lat | times: 17.6471 | round: 1 %}
     <g class="map-site" data-site="{{ forloop.index0 }}" tabindex="0" role="button" aria-label="{{ s.name | escape }}" transform="translate({{ x }} {{ y }})">
       <circle class="halo" r="13"/>
       <circle class="dot" r="6.5"/>
     </g>
-    {%- endfor %}
+    {%- endunless %}{% endfor %}
   </svg>
+
   <figcaption>
     {%- for s in site.data.sites %}
     <div class="map-panel" data-panel="{{ forloop.index0 }}">
@@ -40,6 +62,6 @@
       </ul>
     </div>
     {%- endfor %}
-    <p class="map-hint"><span class="lang-en">Click a point to see the related papers.</span><span class="lang-es" lang="es">Haz clic en un punto para ver los artículos relacionados.</span></p>
+    <p class="map-hint"><span class="lang-en">Click a point or “Global studies” to see the related papers.</span><span class="lang-es" lang="es">Haz clic en un punto o en “Estudios globales” para ver los artículos relacionados.</span></p>
   </figcaption>
 </figure>
